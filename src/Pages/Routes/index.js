@@ -13,6 +13,7 @@ import ProfilePage from "../ProfilePage";
 import ShoppingTrolley from "../ShoppingTrolley";
 import EditAddress from "../../Components/EditAddress/EditAddress";
 import EditProfile from "../../Components/EditProfile/EditProfile";
+import LandingPage from "../LandingPage";
 
 
 const Routes = () => {
@@ -70,6 +71,10 @@ const Routes = () => {
 
             <Route exact path="/editprofile">
               <EditProfile/>
+            </Route>
+
+            <Route exact path="/landing">
+              <LandingPage/>
             </Route>
         </Switch>
         

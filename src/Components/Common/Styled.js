@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { TextField, Button } from '@material-ui/core'
 
-export const EditAddressContainer = styled.div`
+export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
