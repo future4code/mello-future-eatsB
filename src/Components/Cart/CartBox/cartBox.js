@@ -17,6 +17,10 @@ export default function CartBox() {
     CartContext
   );
 
+  const sendOrder = async (e) => {
+    //await placeOrder(state, paymentMethod, restaurantData.id);
+  };
+
   return (
     <>
       <Address>
@@ -35,7 +39,7 @@ export default function CartBox() {
             </Place>
 
             {state.map((item) => {
-              return <CartItem {...item} dispatch={dispatch} />;
+              return <CartItem key={item.id} {...item} dispatch={dispatch} />;
             })}
           </div>
         )}
@@ -56,10 +60,15 @@ export default function CartBox() {
             <label htmlFor=""> Dinheiro</label>
           </div>
           <div>
-            <input type="radio" name="method" value="Cartão de crédito" />{" "}
+            <input type="radio" name="method" value="Cartão de crédito" />
             <label htmlFor=""> Cartão de crédito</label>
           </div>
-          <SaveButton id="confirm" color="secondary" variant="contained">
+          <SaveButton
+            onClick={sendOrder}
+            id="confirm"
+            color="secondary"
+            variant="contained"
+          >
             Confirmar
           </SaveButton>
         </form>

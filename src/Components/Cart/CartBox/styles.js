@@ -40,11 +40,6 @@ export const OrderBox = styled.section`
   justify-content: center;
   position: relative;
 
-  ${Place} {
-    position: absolute;
-    top: 10px;
-  }
-
   #list {
     overflow-y: scroll;
     width: 95%;

@@ -32,6 +32,7 @@ export default function CartProvider({ children }) {
   const [state, dispatch] = useReducer(reducer, productsInCart);
 
   const [restaurantData, setRestaurantData] = useState({
+    id: "",
     name: "Hamburgueria do Fabio Assunção",
     shipmentFee: 20,
     shipmentTime: 10,
@@ -40,7 +41,7 @@ export default function CartProvider({ children }) {
 
   const totalPrice = () =>
     state.reduce((total, num) => {
-      return total + num.price * num.quantity;
+      return Number(total) + Number(num.price) * Number(num.quantity);
     }, 0);
 
   return (
