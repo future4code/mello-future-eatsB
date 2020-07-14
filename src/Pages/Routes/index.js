@@ -72,10 +72,6 @@ const Routes = () => {
             <Route exact path="/editprofile">
               <EditProfile/>
             </Route>
-
-            <Route exact path="/landing">
-              <LandingPage/>
-            </Route>
         </Switch>
         
       </BrowserRouter>
