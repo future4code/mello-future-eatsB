@@ -1,6 +1,7 @@
 import React from "react";
 import Routes from "./Pages/Routes";
-import {createGlobalStyle} from 'styled-components';
+import { createGlobalStyle } from "styled-components";
+import CartProvider from "./Contexts/CartContext/provider";
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -13,13 +14,13 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 const App = () => {
-  
-
   return (
-    <div>
+    <>
       <GlobalStyle />
-      <Routes/>
-    </div>
+      <CartProvider>
+        <Routes />
+      </CartProvider>
+    </>
   );
 };
 
