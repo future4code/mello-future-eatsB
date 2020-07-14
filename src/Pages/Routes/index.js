@@ -11,6 +11,8 @@ import ConfirmationPage from "../ConfirmationPage";
 import DoingOrderPage from "../DoingOrderPage";
 import ProfilePage from "../ProfilePage";
 import ShoppingTrolley from "../ShoppingTrolley";
+import EditAddress from "../../Components/EditAddress/EditAddress";
+import EditProfile from "../../Components/EditProfile/EditProfile";
 
 
 const Routes = () => {
@@ -23,11 +25,11 @@ const Routes = () => {
             </Route>
 
             <Route exact path="/login">
-                <Login/>
+              <Login/>
             </Route>
 
             <Route exact path="/signup">
-               <SignUp/>
+              <SignUp/>
             </Route>
             
             <Route exact path="/endereco">
@@ -51,15 +53,23 @@ const Routes = () => {
             </Route>
 
             <Route exact path="/doing">
-             <DoingOrderPage/>
+              <DoingOrderPage/>
             </Route>
 
             <Route exact path="/carrinho">
-             <ShoppingTrolley/>
+              <ShoppingTrolley/>
             </Route>
 
             <Route exact path="/profile">
-             <ProfilePage/>
+              <ProfilePage/>
+            </Route>
+
+            <Route exact path="/editaddress">
+              <EditAddress/>
+            </Route>
+
+            <Route exact path="/editprofile">
+              <EditProfile/>
             </Route>
         </Switch>
         
