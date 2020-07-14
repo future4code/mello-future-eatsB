@@ -13,7 +13,9 @@ import {
 import CartItem from "../CartItem/cartItem";
 
 export default function CartBox() {
-  const { state, totalPrice, dispatch } = useContext(CartContext);
+  const { state, totalPrice, dispatch, restaurantData } = useContext(
+    CartContext
+  );
 
   return (
     <>
@@ -27,9 +29,9 @@ export default function CartBox() {
         ) : (
           <div id="list">
             <Place>
-              <h3>Nome da hamburgueria</h3>
-              <p>endereço</p>
-              <p>prazo</p>
+              <h3>{restaurantData.name}</h3>
+              <p>{restaurantData.address}</p>
+              <p>{restaurantData.shipmentTime} minutos</p>
             </Place>
 
             {state.map((item) => {
@@ -39,7 +41,7 @@ export default function CartBox() {
         )}
       </OrderBox>
       <DeliveryTax>
-        <p>Frete: R$12</p>
+        <p>Frete: R${restaurantData.shipmentFee}</p>
       </DeliveryTax>
       <PriceBox>
         <p>SUBTOTAL</p>
@@ -50,11 +52,11 @@ export default function CartBox() {
 
         <form action="">
           <div>
-            <input type="radio" value="Dinheiro" />
+            <input type="radio" name="method" value="Dinheiro" />
             <label htmlFor=""> Dinheiro</label>
           </div>
           <div>
-            <input type="radio" value="Cartão de crédito" />{" "}
+            <input type="radio" name="method" value="Cartão de crédito" />{" "}
             <label htmlFor=""> Cartão de crédito</label>
           </div>
           <SaveButton id="confirm" color="secondary" variant="contained">

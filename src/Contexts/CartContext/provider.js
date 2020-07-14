@@ -1,24 +1,14 @@
-import React, { useReducer } from "react";
+import React, { useReducer, useState } from "react";
 import CartContext from "./context";
 
-const initialState = [
-  {
-    id: "3vcYYSOEf8dKeTPd7vHe",
-    price: 3,
-    photoUrl:
-      "https://static-images.ifood.com.br/image/upload/f_auto,t_high/pratos/65c38aa8-b094-413d-9a80-ddc256bfcc78/201907031408_66194519.jpg",
-    name: "Pastel",
-    category: "Pastel",
-    description: "Pastel autêntico, feito na hora!",
-    quantity: 1,
-  },
-];
+const productsInCart = [];
 
 const reducer = (state, action) => {
+  console.log(state);
   switch (action.type) {
     case "ADD_TO_CART":
       const searchIndex = state.findIndex(
-        (item) => item.id === action.product.id //deve receber objeto inteiro além do preço de frete da empresa
+        (item) => item.id === action.product.id
       );
 
       if (searchIndex > -1) {
@@ -39,11 +29,18 @@ const reducer = (state, action) => {
 };
 
 export default function CartProvider({ children }) {
-  const [state, dispatch] = useReducer(reducer, initialState);
+  const [state, dispatch] = useReducer(reducer, productsInCart);
+
+  const [restaurantData, setRestaurantData] = useState({
+    name: "Hamburgueria do Fabio Assunção",
+    shipmentFee: 20,
+    shipmentTime: 10,
+    address: "Rua Joao Vilela, 22",
+  });
 
   const totalPrice = () =>
     state.reduce((total, num) => {
-      return total + num.price; //* num.quantity;
+      return total + num.price * num.quantity;
     }, 0);
 
   return (
@@ -52,6 +49,8 @@ export default function CartProvider({ children }) {
         state,
         dispatch,
         totalPrice,
+        restaurantData,
+        setRestaurantData,
       }}
     >
       {children}

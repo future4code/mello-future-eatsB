@@ -37,6 +37,13 @@ export const OrderBox = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  position: relative;
+
+  ${Place} {
+    position: absolute;
+    top: 10px;
+  }
 
   #list {
     overflow-y: scroll;
@@ -49,6 +56,10 @@ export const PriceBox = styled.section`
   display: flex;
   justify-content: space-between;
   padding: 10px;
+
+  #subtotal {
+    color: green;
+  }
 `;
 
 export const DeliveryTax = styled.section`
