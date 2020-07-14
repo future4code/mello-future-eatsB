@@ -4,9 +4,6 @@ import { Container, Bar, InputLocus, InputRectangle, SaveButton } from '../Commo
 const EditAddress = () => {
   return(
     <Container>
-      <Bar>
-        Endereço
-      </Bar>
       <InputLocus>
         <InputRectangle
           required

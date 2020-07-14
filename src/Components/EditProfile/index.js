@@ -5,9 +5,6 @@ import { Container, Bar, InputLocus, InputRectangle, SaveButton } from '../Commo
 const EditProfile = () => {
   return(
     <Container>
-      <Bar>
-        Editar
-      </Bar>
       <InputLocus>
         <InputRectangle
           required
