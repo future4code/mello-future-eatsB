@@ -1,6 +1,16 @@
 import React, { useContext } from "react";
 import CartContext from "../../../Contexts/CartContext/context";
-import { Address } from "./styles";
+import { SaveButton } from "../../Common/Styled";
+
+import {
+  Address,
+  OrderBox,
+  Place,
+  PriceBox,
+  DeliveryTax,
+  PaymentMethod,
+} from "./styles";
+import CartItem from "../CartItem/cartItem";
 
 export default function CartBox() {
   const { state, totalPrice, dispatch } = useContext(CartContext);
@@ -11,28 +21,47 @@ export default function CartBox() {
         <p>Endereço de entrega</p>
         <b>Rua Antonio Vilela, 22</b>
       </Address>
-      <div>
+      <OrderBox>
         {state.length === 0 ? (
           <h3>Carrinho vazio</h3>
         ) : (
-          state.map((item) => {
-            return <li>item</li>;
-          })
+          <div id="list">
+            <Place>
+              <h3>Nome da hamburgueria</h3>
+              <p>endereço</p>
+              <p>prazo</p>
+            </Place>
+
+            {state.map((item) => {
+              return <CartItem {...item} dispatch={dispatch} />;
+            })}
+          </div>
         )}
+      </OrderBox>
+      <DeliveryTax>
         <p>Frete: R$12</p>
+      </DeliveryTax>
+      <PriceBox>
         <p>SUBTOTAL</p>
-        <p>R$ 500 </p>
-      </div>
-      <p>Forma de pagamento</p>
-      <hr />
-      <form action="">
-        <input type="radio" name="gender" value="Dinheiro" /> Dinheiro
-        <br />
-        <input type="radio" name="gender" value="Cartão de crédito" /> Cartão de
-        crédito
-        <br />
-      </form>
-      <button>Confirmar</button>
+        <p id="subtotal">R$ {totalPrice()}</p>
+      </PriceBox>
+      <PaymentMethod>
+        <p>Forma de pagamento</p>
+
+        <form action="">
+          <div>
+            <input type="radio" value="Dinheiro" />
+            <label htmlFor=""> Dinheiro</label>
+          </div>
+          <div>
+            <input type="radio" value="Cartão de crédito" />{" "}
+            <label htmlFor=""> Cartão de crédito</label>
+          </div>
+          <SaveButton id="confirm" color="secondary" variant="contained">
+            Confirmar
+          </SaveButton>
+        </form>
+      </PaymentMethod>
     </>
   );
 }
