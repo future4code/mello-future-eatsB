@@ -11,8 +11,9 @@ import ConfirmationPage from "../ConfirmationPage";
 import DoingOrderPage from "../DoingOrderPage";
 import ProfilePage from "../ProfilePage";
 import ShoppingTrolley from "../ShoppingTrolley";
-import EditAddress from "../../Components/EditAddress/EditAddress";
-import EditProfile from "../../Components/EditProfile/EditProfile";
+import LandinPage from "../LandingPage"
+import EditAddressPage from "../EditAddressPage";
+import EditProfilePage from "../EditProfilePage";
 
 const Routes = () => {
   return (
@@ -62,6 +63,7 @@ const Routes = () => {
           <ProfilePage />
         </Route>
 
+<<<<<<< HEAD
         <Route exact path="/editaddress">
           <EditAddress />
         </Route>
@@ -71,6 +73,19 @@ const Routes = () => {
         </Route>
       </Switch>
     </BrowserRouter>
+=======
+            <Route exact path="/editaddress">
+              <EditAddressPage/>
+            </Route>
+
+            <Route exact path="/editprofile">
+              <EditProfilePage />
+            </Route>
+        </Switch>
+        
+      </BrowserRouter>
+    
+>>>>>>> c0e6c1b8d57af70ddfc73fd7be6bf5b50d50efc2
   );
 };
 

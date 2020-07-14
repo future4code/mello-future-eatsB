@@ -1,12 +1,9 @@
 import React from 'react'
-import { EditAddressContainer, Bar, InputLocus, InputRectangle, SaveButton } from '../Common/Styled'
+import { Container, Bar, InputLocus, InputRectangle, SaveButton } from '../Common/Styled'
 
 const EditAddress = () => {
   return(
-    <EditAddressContainer>
-      <Bar>
-        Endereço
-      </Bar>
+    <Container>
       <InputLocus>
         <InputRectangle
           required
@@ -63,7 +60,7 @@ const EditAddress = () => {
         variant='contained'>
         Salvar
       </SaveButton>
-    </EditAddressContainer>
+    </Container>
   )
 }
 
