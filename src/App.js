@@ -1,6 +1,7 @@
 import React from "react";
 import Routes from "./Pages/Routes";
-import {createGlobalStyle} from 'styled-components';
+import styled, {createGlobalStyle} from 'styled-components';
+
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -12,14 +13,20 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
+const AppContainer = styled.div`
+  width: 100vw;
+  min-height: 100vh;
+  display: flex;
+`
+
 const App = () => {
   
 
   return (
-    <div>
+    <AppContainer>
       <GlobalStyle />
       <Routes/>
-    </div>
+    </AppContainer>
   );
 };
 

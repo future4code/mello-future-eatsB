@@ -1,13 +1,10 @@
 import React from 'react'
-import { EditAddressContainer, Bar, InputLocus, InputRectangle, SaveButton } from '../Common/Styled'
+import { Container, Bar, InputLocus, InputRectangle, SaveButton } from '../Common/Styled'
 // import { ArrowBackIosRounded } from '@material-ui/icons' // arrow para voltar.
 
 const EditProfile = () => {
   return(
-    <EditAddressContainer>
-      <Bar>
-        Editar
-      </Bar>
+    <Container>
       <InputLocus>
         <InputRectangle
           required
@@ -39,7 +36,7 @@ const EditProfile = () => {
         variant='contained'>
         Salvar
       </SaveButton>
-    </EditAddressContainer>
+    </Container>
   )
 }
 
