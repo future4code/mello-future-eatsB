@@ -41,7 +41,7 @@ const EditProfile = () => {
     const { name, value } = e.target
     onChange(name, value)
   }
-  
+
   return(
     <Container>
       <InputLocus>
@@ -90,4 +90,5 @@ const EditProfile = () => {
     </Container>
   )
 }
-export default EditProfile
+
+export default EditProfile;

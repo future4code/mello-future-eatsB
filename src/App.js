@@ -1,6 +1,6 @@
 import React from "react";
 import Routes from "./Pages/Routes";
-import { createGlobalStyle } from "styled-components";
+import {createGlobalStyle} from 'styled-components';
 import CartProvider from "./Contexts/CartContext/provider";
 import { createMuiTheme, ThemeProvider } from '@material-ui/core'
 
