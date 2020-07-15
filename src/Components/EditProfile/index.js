@@ -25,6 +25,7 @@ const CpfMask = props => {
     />
   )
 }
+
 CpfMask.propTypes = {
   inputRef: PropTypes.func.isRequired
 };
@@ -37,6 +38,7 @@ const EditProfile = () => {
     email: '',
     cpf: ''
   })
+
   const handleChange = e => {
     const { name, value } = e.target
     onChange(name, value)
@@ -80,6 +82,7 @@ const EditProfile = () => {
           InputProps={{inputComponent: CpfMask}}
         />
       </InputLocus>
+    
       <SaveButton
         variant='contained'
         color='secondary'
