@@ -1,6 +1,7 @@
 import React from "react";
 import Routes from "./Pages/Routes";
 import {createGlobalStyle} from 'styled-components';
+import FeedPage from "./Pages/FeedPage";
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -17,8 +18,9 @@ const App = () => {
 
   return (
     <div>
-      <GlobalStyle />
-      <Routes/>
+    <GlobalStyle />
+    <FeedPage/>
+   
     </div>
   );
 };
