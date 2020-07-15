@@ -30,8 +30,9 @@ const Routes = () => {
           <SignUp />
         </Route>
 
-        <Route exact path="/endereco">
-          <AdressPage />
+            
+        <Route exact path="/address">
+          <AdressPage/>
         </Route>
 
         <Route exact path="/feed">
@@ -42,8 +43,8 @@ const Routes = () => {
           <SearchPage />
         </Route>
 
-        <Route exact path="/restaurants">
-          <RestaurantsPage />
+        <Route exact path="/restaurants/:restaurantId">
+          <RestaurantsPage/>
         </Route>
 
         <Route exact path="/confirmation">
