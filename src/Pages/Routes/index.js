@@ -11,7 +11,7 @@ import ConfirmationPage from "../ConfirmationPage";
 import DoingOrderPage from "../DoingOrderPage";
 import ProfilePage from "../ProfilePage";
 import ShoppingTrolley from "../ShoppingTrolley";
-import LandinPage from "../LandingPage"
+// import LandingPage from "../LandingPage"
 import EditAddressPage from "../EditAddressPage";
 import EditProfilePage from "../EditProfilePage";
 
