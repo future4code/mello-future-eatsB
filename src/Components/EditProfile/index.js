@@ -1,3 +1,4 @@
+
 import React, { useRef } from 'react'
 import { Container, InputLocus, InputRectangle, SaveButton } from '../Common/Styled'
 import { useForm } from '../../Hooks/useForm'
@@ -24,6 +25,7 @@ const CpfMask = props => {
 CpfMask.propTypes = {
   inputRef: PropTypes.func.isRequired
 };
+
 
 const EditProfile = () => {
 
@@ -77,6 +79,7 @@ const EditProfile = () => {
           inputRef={myInput}
         />
       </InputLocus>
+
       <SaveButton
         variant='contained'
         color='secondary'
@@ -87,4 +90,5 @@ const EditProfile = () => {
     </Container>
   )
 }
-export default EditProfile
+
+export default EditProfile;
