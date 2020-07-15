@@ -90,4 +90,5 @@ const EditProfile = () => {
     </Container>
   )
 }
-export default EditProfile
+
+export default EditProfile;
