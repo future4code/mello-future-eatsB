@@ -17,11 +17,12 @@ const EditAddress = () => {
     state: '',
     complement: ''
   })
+
   const handleChange = e => {
     const { name, value } = e.target
     onChange(name, value)
   }
-  
+
   return(
     <Container>
       <InputLocus>
@@ -40,6 +41,8 @@ const EditAddress = () => {
         <InputRectangle
           name='number'
           required
+          inputProps={{min: 0, inputMode: 'numeric'}}
+          type='number'
           label='Número'
           variant='outlined'
           value={form.number}
@@ -85,6 +88,7 @@ const EditAddress = () => {
           onChange={handleChange}
         />
       </InputLocus>
+
       <InputLocus>
         <InputRectangle 
           name='state'
