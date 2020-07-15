@@ -1,7 +1,11 @@
 import React from 'react'
-import { Container, InputLocus, InputRectangle, SaveButton } from '../Common/Styled'
+import { 
+  Container, 
+  InputLocus, 
+  InputRectangle, 
+  SaveButton 
+} from '../Common/Styled'
 import { useForm } from '../../Hooks/useForm'
-
 
 const EditAddress = () => {
 
@@ -28,6 +32,7 @@ const EditAddress = () => {
           label='Logradouro'
           variant='outlined'
           value={form.street}
+          color='secondary'
           onChange={handleChange}
           />
       </InputLocus>
@@ -41,8 +46,10 @@ const EditAddress = () => {
           label='Número'
           variant='outlined'
           value={form.number}
+          color='secondary'
           onChange={handleChange}
-          placeholder='Ex. 5'
+          placeholder='Ex. 0'
+          inputProps={{min: 0, inputMode: 'numeric'}}
         />
       </InputLocus>
 
@@ -52,8 +59,9 @@ const EditAddress = () => {
         label='Complemento'
         variant='outlined'
         value={form.complement}
+        color='secondary'
         onChange={handleChange}
-        placeholder='Ex. apto./bloco'
+        placeholder='Ex. apto/bloco'
       />
       </InputLocus>
 
@@ -64,7 +72,8 @@ const EditAddress = () => {
         label='Bairro'
         variant='outlined'
         value={form.neighbourhood}
-          onChange={handleChange}
+        color='secondary'
+        onChange={handleChange}
       />
       </InputLocus>
 
@@ -75,21 +84,23 @@ const EditAddress = () => {
           label='Cidade'
           variant='outlined'
           value={form.city}
+          color='secondary'
           onChange={handleChange}
         />
       </InputLocus>
 
       <InputLocus>
-          <InputRectangle 
-            name='state'
-            required
-            label='Estado'
-            variant='outlined'
-            value={form.state.toUpperCase()}
-            onChange={handleChange}
-            inputProps={{maxLength: 2}}
-            placeholder='Ex. SP'
-          />
+        <InputRectangle 
+          name='state'
+          required
+          label='Estado'
+          variant='outlined'
+          value={form.state.toUpperCase()}
+          color='secondary'
+          onChange={handleChange}
+          inputProps={{maxLength: 2}}
+          placeholder='Ex. SP'
+        />
       </InputLocus>
 
       <SaveButton

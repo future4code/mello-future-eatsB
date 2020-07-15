@@ -1,31 +1,34 @@
-
-import React, { useRef } from 'react'
-import { Container, InputLocus, InputRectangle, SaveButton } from '../Common/Styled'
+import React, { useRef } from "react";
+import {
+  Container,
+  InputLocus,
+  InputRectangle,
+  SaveButton,
+} from "../Common/Styled";
 import { useForm } from '../../Hooks/useForm'
-import PropTypes from 'prop-types'
 import Cleave from 'cleave.js/react'
+import PropTypes from 'prop-types'
 
 const CpfMask = props => {
   const { inputRef, ...rest } = props
   return(
     <Cleave
       ref={(ref) => {
-        inputRef(ref ? ref.inputElement : null);
+        inputRef(ref ? ref.inputElement : null)
       }}
       options={{
         blocks: [ 3, 3, 3, 2],
-        delimiters: ['.','.','-'],
-        numeral: false
+        delimiters: ['.','.','-']
       }}
-      inputMode='numeric'
       {...rest}
+      inputMode='numeric'
     />
   )
 }
+
 CpfMask.propTypes = {
   inputRef: PropTypes.func.isRequired
 };
-
 
 const EditProfile = () => {
 
@@ -75,11 +78,11 @@ const EditProfile = () => {
           placeholder='000.000.000-00'
           value={form.cpf}
           onChange={handleChange}
-          InputProps={{inputComponent: CpfMask}}
           inputRef={myInput}
+          InputProps={{inputComponent: CpfMask}}
         />
       </InputLocus>
-
+    
       <SaveButton
         variant='contained'
         color='secondary'
