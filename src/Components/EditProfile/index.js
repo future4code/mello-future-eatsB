@@ -43,7 +43,7 @@ const EditProfile = () => {
     const { name, value } = e.target
     onChange(name, value)
   }
-
+  
   return(
     <Container>
       <InputLocus>
