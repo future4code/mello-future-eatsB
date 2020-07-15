@@ -1,14 +1,33 @@
-import React, { useRef, useEffect } from 'react'
+import React, { useRef } from 'react'
 import { Container, InputLocus, InputRectangle, SaveButton } from '../Common/Styled'
 import { useForm } from '../../Hooks/useForm'
 import PropTypes from 'prop-types'
 import Cleave from 'cleave.js/react'
 
+const CpfMask = props => {
+  const { inputRef, ...rest } = props
+  return(
+    <Cleave
+      ref={(ref) => {
+        inputRef(ref ? ref.inputElement : null);
+      }}
+      options={{
+        blocks: [ 3, 3, 3, 2],
+        delimiters: ['.','.','-'],
+        numeral: false
+      }}
+      inputMode='numeric'
+      {...rest}
+    />
+  )
+}
+CpfMask.propTypes = {
+  inputRef: PropTypes.func.isRequired
+};
 
 const EditProfile = () => {
-  const myInput = useRef();
-  useEffect(() => myInput.current && myInput.current.focus());
 
+  const myInput = useRef();
   const { form, onChange } = useForm({
     name: '',
     email: '',
@@ -19,25 +38,6 @@ const EditProfile = () => {
     const { name, value } = e.target
     onChange(name, value)
   }
-
-  const MaskedInput = props => {
-    const { inputRef, ...rest } = props
-    return(
-      <Cleave
-        inputRef={myInput}
-        options={{
-          blocks: [ 3, 3, 3, 2],
-          delimiters: ['.','.','-']
-        }}
-        {...rest}
-        inputMode='numeric'
-      />
-    )
-  }
-
-  MaskedInput.propTypes = {
-    inputRef: PropTypes.func.isRequired
-  };
 
   return(
     <Container>
@@ -52,7 +52,6 @@ const EditProfile = () => {
           onChange={handleChange}
           />
       </InputLocus>
-
       <InputLocus>
         <InputRectangle
           name='email'
@@ -64,7 +63,6 @@ const EditProfile = () => {
           onChange={handleChange}
         />
       </InputLocus>
-
       <InputLocus>
         <InputRectangle
           name='cpf'
@@ -73,13 +71,12 @@ const EditProfile = () => {
           variant='outlined'
           color='secondary'
           placeholder='000.000.000-00'
-          value= {form.cpf}
+          value={form.cpf}
           onChange={handleChange}
+          InputProps={{inputComponent: CpfMask}}
           inputRef={myInput}
-          InputProps={{inputComponent: MaskedInput}}
         />
       </InputLocus>
-
       <SaveButton
         variant='contained'
         color='secondary'
@@ -90,5 +87,4 @@ const EditProfile = () => {
     </Container>
   )
 }
-
 export default EditProfile

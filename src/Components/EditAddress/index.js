@@ -1,7 +1,6 @@
 import React from 'react'
 import { Container, InputLocus, InputRectangle, SaveButton } from '../Common/Styled'
 import { useForm } from '../../Hooks/useForm'
-import { Tooltip } from '@material-ui/core'
 
 
 const EditAddress = () => {
@@ -81,12 +80,6 @@ const EditAddress = () => {
       </InputLocus>
 
       <InputLocus>
-        <Tooltip 
-          title='Utiliza as siglas do estado' 
-          placement='left' 
-          enterTouchDelay= {30}
-          arrow
-        >
           <InputRectangle 
             name='state'
             required
@@ -95,8 +88,8 @@ const EditAddress = () => {
             value={form.state.toUpperCase()}
             onChange={handleChange}
             inputProps={{maxLength: 2}}
+            placeholder='Ex. SP'
           />
-        </Tooltip>
       </InputLocus>
 
       <SaveButton
