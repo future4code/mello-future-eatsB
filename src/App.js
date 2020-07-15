@@ -1,6 +1,7 @@
 import React from "react";
 import Routes from "./Pages/Routes";
-import {createGlobalStyle} from 'styled-components';
+import { createGlobalStyle } from "styled-components";
+import CartProvider from "./Contexts/CartContext/provider";
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -9,17 +10,24 @@ const GlobalStyle = createGlobalStyle`
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
   }
 `;
 
-const App = () => {
-  
+/* const AppContainer = styled.div`
+  width: 100vw;
+  min-height: 100vh;
+  display: flex;
+` */
 
+const App = () => {
   return (
-    <div>
+    <>
       <GlobalStyle />
-      <Routes/>
-    </div>
+      <CartProvider>
+        <Routes />
+      </CartProvider>
+    </>
   );
 };
 
