@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
-import ProfileRestaurants from "./ProfileRestaurants.js";
 import axios from "axios";
+import SearchCard from "../../Components/SearchCard/SearchCard.js";
+import ProfileRestaurants from "../../Components/ProfileRestaurants/index.js";
+import MenuBar from "../../Components/MenuBar/MenuBar.js";
 
 
 
@@ -27,6 +29,12 @@ useEffect(()=>{
   return (
 
   <div>
+    <div>
+      <SearchCard/>
+    </div>
+    <div>
+      <MenuBar/>
+    </div>
     {restaurants.map(restaurant=> {
       return <ProfileRestaurants restaurants={restaurant}/>
     })}

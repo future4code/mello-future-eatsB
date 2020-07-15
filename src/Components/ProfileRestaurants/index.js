@@ -62,7 +62,6 @@ const ProfileRestaurants = (props) => {
 
   return (
     <MainContainer>
-        <p>Busca</p>
         <ImgStyle src={props.restaurants.logoUrl}/>
         <RestaurantStyle>{props.restaurants.name} </RestaurantStyle>
         <TimeDelivery>{props.restaurants.deliveryTime} min </TimeDelivery>
