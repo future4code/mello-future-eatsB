@@ -1,13 +1,13 @@
 import React from 'react'
-import { Bar } from '../../Components/Header/Styled'
 import Header from '../../Components/Header'
+import EditAddress from '../../Components/EditAddress'
 
 const EditAddressPage = () => {
   return(
     <div>
       <Header 
         title='Endereço'/>
-
+      <EditAddress />
     </div>
   )
 }

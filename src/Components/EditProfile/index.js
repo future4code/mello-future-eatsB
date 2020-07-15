@@ -1,67 +1,93 @@
-<<<<<<< HEAD:src/Components/EditProfile/EditProfile.js
-import React from "react";
+import React, { useRef } from "react";
 import {
-  EditAddressContainer,
-  Bar,
+  Container,
   InputLocus,
   InputRectangle,
   SaveButton,
 } from "../Common/Styled";
-// import { ArrowBackIosRounded } from '@material-ui/icons' // arrow para voltar.
+import { useForm } from '../../Hooks/useForm'
+import Cleave from 'cleave.js/react'
+import PropTypes from 'prop-types'
+
+const CpfMask = props => {
+  const { inputRef, ...rest } = props
+  return(
+    <Cleave
+      ref={(ref) => {
+        inputRef(ref ? ref.inputElement : null)
+      }}
+      options={{
+        blocks: [ 3, 3, 3, 2],
+        delimiters: ['.','.','-']
+      }}
+      {...rest}
+      inputMode='numeric'
+    />
+  )
+}
+CpfMask.propTypes = {
+  inputRef: PropTypes.func.isRequired
+};
 
 const EditProfile = () => {
-  return (
-    <EditAddressContainer>
-      <Bar>Editar</Bar>
-=======
-import React from 'react'
-import { Container, Bar, InputLocus, InputRectangle, SaveButton } from '../Common/Styled'
-// import { ArrowBackIosRounded } from '@material-ui/icons' // arrow para voltar.
 
-const EditProfile = () => {
+  const myInput = useRef();
+  const { form, onChange } = useForm({
+    name: '',
+    email: '',
+    cpf: ''
+  })
+  const handleChange = e => {
+    const { name, value } = e.target
+    onChange(name, value)
+  }
+  
   return(
     <Container>
->>>>>>> c0e6c1b8d57af70ddfc73fd7be6bf5b50d50efc2:src/Components/EditProfile/index.js
       <InputLocus>
         <InputRectangle
+          name= 'name'
           required
-          label="Nome"
-          variant="outlined"
-          defaultValue=" "
-        />
+          label='Nome'
+          variant='outlined'
+          value={form.name}
+          color='secondary'
+          onChange={handleChange}
+          />
       </InputLocus>
-
       <InputLocus>
         <InputRectangle
+          name='email'
           required
-          label="E-mail"
-          variant="outlined"
-          defaultValue=" "
+          label='E-mail'
+          variant='outlined'
+          value={form.email}
+          color='secondary'
+          onChange={handleChange}
         />
       </InputLocus>
-
       <InputLocus>
         <InputRectangle
+          name='cpf'
           required
-          label="CPF"
-          variant="outlined"
-          defaultValue=" "
+          label='CPF'
+          variant='outlined'
+          color='secondary'
+          placeholder='000.000.000-00'
+          value={form.cpf}
+          onChange={handleChange}
+          inputRef={myInput}
+          InputProps={{inputComponent: CpfMask}}
         />
       </InputLocus>
-
-<<<<<<< HEAD:src/Components/EditProfile/EditProfile.js
-      <SaveButton variant="contained">Salvar</SaveButton>
-    </EditAddressContainer>
-  );
-};
-=======
       <SaveButton
-        variant='contained'>
+        variant='contained'
+        color='secondary'
+        onClick={() => console.log(form.name + ' + ' + form.email + ' + ' + form.cpf)}
+      >
         Salvar
       </SaveButton>
     </Container>
   )
 }
->>>>>>> c0e6c1b8d57af70ddfc73fd7be6bf5b50d50efc2:src/Components/EditProfile/index.js
-
-export default EditProfile;
+export default EditProfile

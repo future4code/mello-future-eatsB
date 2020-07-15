@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router";
-/* import useProtectedPage from "../../Hooks/UseProtectedPage" */
-import { EditAddressContainer, Bar } from '../../Components/Common/Styled'
+import { Container } from '../../Components/Common/Styled'
+import Header from '../../Components/Header'
 
 const baseUrl = 
     "https://us-central1-missao-newton.cloudfunctions.net/futureEatsB"
@@ -49,8 +49,10 @@ const RestaurantsPage = () => {
   };
 
   return (
-    <EditAddressContainer>
-      <Bar>Restaurante</Bar>
+    <Container>
+      <Header
+        title='Feed'
+      />
       <h3>{restaurantName}</h3>
       <p>{category}</p>
       <p>{deliveryTime} min       Frete R${shippingPrice}</p>
@@ -58,7 +60,7 @@ const RestaurantsPage = () => {
       {products && products.map((product) => {
         return (
           <div>
-            <Bar>{product.category}</Bar>
+            <div>{product.category}</div>
             <img src={product.photoUrl} width="80" alt="Food"/>
             <h3>{product.name}</h3>
             <p>{product.description}</p>
@@ -66,7 +68,7 @@ const RestaurantsPage = () => {
           </div>
         )
       })}
-    </EditAddressContainer>
+    </Container>
    
   );
 };
