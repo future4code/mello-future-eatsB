@@ -15,7 +15,6 @@ import { useHistory } from "react-router-dom";
 import { CloseRounded } from '@material-ui/icons'
 import ModalBody from "./modal";
 
-
 const CpfMask = props => {
   const { inputRef, ...rest } = props
 
@@ -34,6 +33,7 @@ const CpfMask = props => {
     />
   )
 }
+
 CpfMask.propTypes = {
   inputRef: PropTypes.func.isRequired
 };
@@ -130,4 +130,5 @@ const EditProfile = () => {
     </Container>
   )
 }
-export default EditProfile
+
+export default EditProfile;
