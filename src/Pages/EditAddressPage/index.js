@@ -1,15 +1,13 @@
-import React from 'react'
-import { Bar } from '../../Components/Header/Styled'
-import Header from '../../Components/Header'
+import React from "react";
+import { Bar } from "../../Components/Header/Styled";
+import Header from "../../Components/Header";
 
 const EditAddressPage = () => {
-  return(
+  return (
     <div>
-      <Header 
-        title='Endereço'/>
-
+      <Header title="Endereço" />
     </div>
-  )
-}
+  );
+};
 
-export default EditAddressPage
+export default EditAddressPage;
