@@ -19,8 +19,8 @@ const baseUrl =
     "https://us-central1-missao-newton.cloudfunctions.net/futureEatsB"
 
 function getModalStyle() {
-  const top = 50 ;
-  const left = 50 ;
+  const top = 50;
+  const left = 50;
 
   return {
     top: `${top}%`,
@@ -135,15 +135,15 @@ const RestaurantsPage = () => {
         <GreyTextShipping>Frete R${shippingPrice}</GreyTextShipping>
         <GreyTextAddress>{restaurantAddress}</GreyTextAddress>
       </RestaurantPresentation>
-      {products && products.map((product) => {
+     {products && products.map((product) => {
         return (
           <RestaurantMenu>
             <CategoryMenu>{product.category}</CategoryMenu>
             <ItemCard>
               <ImgMenu 
                 src={product.photoUrl}
-                srcSet={`${product.photoUrl}@2.png 2x, @3.png 3x`}
-                alt="ImgFood"
+                srcSet={`${product.photoUrl}@2x.png 2x, ${product.photoUrl}@3x.png 3x`}
+                alt="ImgFood"         
               />
               <BoxDescription>
                 <QuantityButton>1</QuantityButton>
@@ -155,7 +155,7 @@ const RestaurantsPage = () => {
             </ItemCard>
           </RestaurantMenu>
         )
-      })}
+      })} 
       {/* ------------------------------- */}
       <div>
         <Modal
