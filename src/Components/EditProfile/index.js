@@ -6,15 +6,14 @@ import {
   SaveButton,
   ModalContainer,
 } from "../Common/Styled";
-import { useForm } from '../../Hooks/useForm'
 import Cleave from 'cleave.js/react'
 import PropTypes from 'prop-types'
 import ProfileContext from "../../Contexts/ProfileContext/context";
 import { updateProfile } from "./services";
 import { useHistory } from "react-router-dom";
 import { CloseRounded } from '@material-ui/icons'
-import ModalBody from "./modal";
-
+import ModalBody from "../Modal/modal";
+import { useForm } from "../../Hooks/useForm";
 
 const CpfMask = props => {
   const { inputRef, ...rest } = props
@@ -30,6 +29,7 @@ const CpfMask = props => {
         delimiters: ['.','.','-'],
         numericalOnly: true
       }}
+      inputMode='numeric'
       {...rest}
     />
   )
@@ -63,14 +63,14 @@ const EditProfile = () => {
     setIsOpen(bool)
   }
 
-  const sendUpdate = async() => {
+  const sendProfileUpdate = async() => {
     await updateProfile(form.name, form.email, form.cpf)
     handleOpen(true)
   }
   const body = (
     <ModalContainer>
       <span onClick={() => history.push('/profile')}> <CloseRounded /> </span>
-      <div>Cadastro efetuado com sucesso!</div>
+      <div>Cadastro atualizado com sucesso!</div>
     </ModalContainer>
   )
 
@@ -118,7 +118,7 @@ const EditProfile = () => {
       <SaveButton
         variant='contained'
         color='secondary'
-        onClick={sendUpdate}
+        onClick={sendProfileUpdate}
       >
         Salvar
       </SaveButton>
