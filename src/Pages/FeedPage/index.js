@@ -1,16 +1,33 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import SearchCard from "../../Components/SearchCard/SearchCard.js";
 import ProfileRestaurants from "../../Components/ProfileRestaurants/index.js";
 import MenuBar from "../../Components/MenuBar/MenuBar.js";
+import styled from "styled-components";
+import FiltersContext from "../../Contexts/Filters";
 
+const MainContainer = styled.div`
+  width: 360px;
+  height: 640px;
+`
 
-
-const FeedPage = () => {
+const FeedPage = (props) => {
 
   const baseUrl = "https://us-central1-missao-newton.cloudfunctions.net/futureEatsB"
   const [restaurants, setRestaurants] = useState([])
-  
+  const {filters, dispatch} = useContext(FiltersContext)
+
+  /*FILTRO */  
+
+  const filteredRestaurants = restaurants.filter((restaurants) => {
+    if(restaurants.name.includes(filters.name)) {
+      return true;
+    }
+
+    return false;
+});
+
+/*COLOQUEI UM TOKEN PARA TESTAR */
 
 useEffect(()=>{
    const axiosConfig = {
@@ -28,20 +45,13 @@ useEffect(()=>{
 
   return (
 
-  <div>
-    <div>
+  <MainContainer>
       <SearchCard/>
-    </div>
-    <div>
       <MenuBar/>
-    </div>
-    {restaurants.map(restaurant=> {
-      return <ProfileRestaurants restaurants={restaurant}/>
-    })}
-  </div>  
-    
-    
-   
+      {filteredRestaurants.map(restaurant=> {
+        return <ProfileRestaurants restaurants={restaurant}/>
+      })}
+  </MainContainer>  
   );
 };
 

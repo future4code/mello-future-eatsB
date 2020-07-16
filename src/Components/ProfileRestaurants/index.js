@@ -1,19 +1,18 @@
-import React from "react";
+import React, { useReducer, useContext } from "react";
 import styled from 'styled-components';
 
+
 const MainContainer = styled.div` 
-border: 1px solid black;
-border-radius: 3px;
-width: 650px;
-height: 450px;
-margin: 30px;
+  width: 328px;
+  height: 188px;
+  border-radius: 8px;
+  border: solid 1px #b8b8b8;
 `
 
 const ImgStyle = styled.img`
   width: 328px;
   height: 120px;
   object-fit: contain;
-
 `
 
 const RestaurantStyle = styled.p`
@@ -55,19 +54,19 @@ const Shipping = styled.p`
   text-align: right;
   color: #b8b8b8;
 `
- 
+
 
 const ProfileRestaurants = (props) => {
-    
 
   return (
+    
     <MainContainer>
         <ImgStyle src={props.restaurants.logoUrl}/>
         <RestaurantStyle>{props.restaurants.name} </RestaurantStyle>
         <TimeDelivery>{props.restaurants.deliveryTime} min </TimeDelivery>
         <Shipping>Frete {props.restaurants.shipping},00 </Shipping>
     </MainContainer>
-   
+    
   );
 };
 
