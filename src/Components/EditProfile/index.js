@@ -1,16 +1,24 @@
-import React, { useRef } from "react";
+import React, { useRef, useContext, useState } from "react";
 import {
   Container,
   InputLocus,
   InputRectangle,
   SaveButton,
+  ModalContainer,
 } from "../Common/Styled";
 import { useForm } from '../../Hooks/useForm'
 import Cleave from 'cleave.js/react'
 import PropTypes from 'prop-types'
+import ProfileContext from "../../Contexts/ProfileContext/context";
+import { updateProfile } from "./services";
+import { useHistory } from "react-router-dom";
+import { CloseRounded } from '@material-ui/icons'
+import ModalBody from "./modal";
+
 
 const CpfMask = props => {
   const { inputRef, ...rest } = props
+
   return(
     <Cleave
       ref={(ref) => {
@@ -18,10 +26,11 @@ const CpfMask = props => {
       }}
       options={{
         blocks: [ 3, 3, 3, 2],
-        delimiters: ['.','.','-']
+        delimiter: '',
+        delimiters: ['.','.','-'],
+        numericalOnly: true
       }}
       {...rest}
-      inputMode='numeric'
     />
   )
 }
@@ -31,28 +40,52 @@ CpfMask.propTypes = {
 
 const EditProfile = () => {
 
+  const [ isOpen, setIsOpen ] = useState(false)
+  const history = useHistory()
+
+  const { profileData } = useContext(
+    ProfileContext
+  );
+
   const myInput = useRef();
   const { form, onChange } = useForm({
-    name: '',
-    email: '',
-    cpf: ''
+    name: profileData.name,
+    email: profileData.email,
+    cpf: profileData.cpf
   })
+
   const handleChange = e => {
     const { name, value } = e.target
     onChange(name, value)
   }
-  
+
+  const handleOpen = (bool) => {
+    setIsOpen(bool)
+  }
+
+  const sendUpdate = async() => {
+    await updateProfile(form.name, form.email, form.cpf)
+    handleOpen(true)
+  }
+  const body = (
+    <ModalContainer>
+      <span onClick={() => history.push('/profile')}> <CloseRounded /> </span>
+      <div>Cadastro efetuado com sucesso!</div>
+    </ModalContainer>
+  )
+
   return(
     <Container>
       <InputLocus>
         <InputRectangle
-          name= 'name'
+          name='name'
           required
           label='Nome'
           variant='outlined'
           value={form.name}
           color='secondary'
           onChange={handleChange}
+          InputLabelProps={{shrink: true}}
           />
       </InputLocus>
       <InputLocus>
@@ -64,29 +97,36 @@ const EditProfile = () => {
           value={form.email}
           color='secondary'
           onChange={handleChange}
+          InputLabelProps={{shrink: true}}
         />
       </InputLocus>
       <InputLocus>
         <InputRectangle
+          label='CPF'
           name='cpf'
           required
-          label='CPF'
           variant='outlined'
           color='secondary'
-          placeholder='000.000.000-00'
-          value={form.cpf}
           onChange={handleChange}
+          value={form.cpf}
           inputRef={myInput}
           InputProps={{inputComponent: CpfMask}}
+          InputLabelProps={{shrink: true}}
         />
       </InputLocus>
+
       <SaveButton
         variant='contained'
         color='secondary'
-        onClick={() => console.log(form.name + ' + ' + form.email + ' + ' + form.cpf)}
+        onClick={sendUpdate}
       >
         Salvar
       </SaveButton>
+      <ModalBody 
+        open={isOpen}
+        close={() => handleOpen(false)}
+        body={body}
+      />
     </Container>
   )
 }
