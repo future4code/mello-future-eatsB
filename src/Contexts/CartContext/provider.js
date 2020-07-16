@@ -4,7 +4,6 @@ import CartContext from "./context";
 const productsInCart = [];
 
 const reducer = (state, action) => {
-  console.log(state);
   switch (action.type) {
     case "ADD_TO_CART":
       const searchIndex = state.findIndex(

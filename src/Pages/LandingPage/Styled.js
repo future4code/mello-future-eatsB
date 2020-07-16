@@ -1,4 +1,4 @@
-import styled, {keyframes} from 'styled-components';
+import styled, { keyframes } from "styled-components";
 
 const OpenUp = keyframes`
   from {
@@ -6,20 +6,20 @@ const OpenUp = keyframes`
     width: 0px;
   }
   to{
-    width: auto%;
-    height: auto%;
+    width: 30%;
   }
-`
+`;
 
 export const Container = styled.div`
-  flex: 1;
   display: flex;
+  width: auto;
+  height: 100vh;
   justify-content: center;
   align-items: center;
   background-color: black;
-  
+
   img {
-    width: 60%;
+    width: 30%;
     animation: ${OpenUp} 3s;
   }
 `;

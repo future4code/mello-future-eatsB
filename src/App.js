@@ -1,19 +1,8 @@
 import React from "react";
 import Routes from "./Pages/Routes";
-import {createGlobalStyle} from 'styled-components';
+import { createGlobalStyle } from "styled-components";
 import CartProvider from "./Contexts/CartContext/provider";
-import { createMuiTheme, ThemeProvider } from '@material-ui/core'
-
-const theme = createMuiTheme({
-  palette: {
-    primary: {
-      main: '#b8b8b8'
-    },
-    secondary: {
-      main: '#5cb646'
-    }
-  } 
-})
+import { createMuiTheme, ThemeProvider } from "@material-ui/core";
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -28,14 +17,13 @@ const GlobalStyle = createGlobalStyle`
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: '#b8b8b8',
+      main: "#b8b8b8",
     },
     secondary: {
-      main: '#5cb646',
+      main: "#5cb646",
     },
   },
 });
-
 
 const App = () => {
   return (
