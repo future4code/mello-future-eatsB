@@ -1,26 +1,22 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useParams } from "react-router";
+import { useHistory, useParams } from "react-router";
 import Back from "../../Assets/img/Back.svg"
 import { Container, Bar, BackImg, TextBar, 
   RestaurantPresentation, ImgLogo, GreenTextTitle, 
   GreyTextCategory, GreyTextTime, GreyTextShipping,
   GreyTextAddress, RestaurantMenu, ItemCard, 
-  CategoryMenu, GreenText, GreyText,
-  GreySmallText, BlackText, AddButton, ImgMenu, 
-  BoxDescription, QuantityButton, ModalDiv,
-  SelectStyle, OptionStyle, BlackTextModal,
+  CategoryMenu, GreenText, GreySmallText, BlackText, 
+  AddButton, ImgMenu, BoxDescription, QuantityButton, 
+  ModalDiv, SelectStyle, OptionStyle, BlackTextModal,
   GreenTextModal } 
   from './styled';
-/* ------------------------------- */
+
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
-/* ------------------------------- */
 
 const baseUrl = 
     "https://us-central1-missao-newton.cloudfunctions.net/futureEatsB"
- 
-/* ------------------------------- */
 
 function getModalStyle() {
   const top = 50 ;
@@ -48,7 +44,6 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(2, 4, 3),
   },
 }));
-/* ------------------------------- */
 
 const RestaurantsPage = () => {
 
@@ -60,8 +55,8 @@ const RestaurantsPage = () => {
   const [shippingPrice, setShippingPrice] = useState("");
   const [restaurantAddress, setRestaurantAddress] = useState("");
 
-
   const { restaurantId } = useParams(); 
+  const history = useHistory();
 
   useEffect(() => {
     getRestaurantDetail();
@@ -89,7 +84,10 @@ const RestaurantsPage = () => {
     }
   };
 
-  /* ------------------------------- */
+  const backToFeed = () => {
+    history.push("/feed");
+  };
+
   const classes = useStyles();
   // getModalStyle is not a pure function, we roll the style only on the first render
   const [modalStyle] = React.useState(getModalStyle);
@@ -122,12 +120,11 @@ const RestaurantsPage = () => {
       <GreenTextModal>ADICIONAR AO CARRINHO</GreenTextModal>
     </ModalDiv>
   );
-  /* ------------------------------- */
 
   return (
     <Container>
       <Bar>
-        <BackImg src={Back} alt="Drop Right"/>
+        <BackImg onClick={backToFeed} src={Back} alt="Drop Right"/>
         <TextBar>Restaurante</TextBar>
       </Bar>
       <RestaurantPresentation>
@@ -172,7 +169,6 @@ const RestaurantsPage = () => {
       </div>
       {/* ------------------------------- */}
     </Container>
-   
   );
 };
 

@@ -5,9 +5,9 @@ import {
   InputRectangle,
   SaveButton,
 } from "../Common/Styled";
-import { useForm } from '../../Hooks/useForm'
-import Cleave from 'cleave.js/react'
-import PropTypes from 'prop-types'
+import { useForm } from '../../Hooks/useForm';
+import Cleave from 'cleave.js/react';
+import PropTypes from 'prop-types';
 
 const CpfMask = props => {
   const { inputRef, ...rest } = props
