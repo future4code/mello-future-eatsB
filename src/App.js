@@ -1,7 +1,19 @@
 import React from "react";
 import Routes from "./Pages/Routes";
-import { createGlobalStyle } from "styled-components";
+import {createGlobalStyle} from 'styled-components';
 import CartProvider from "./Contexts/CartContext/provider";
+import { createMuiTheme, ThemeProvider } from '@material-ui/core'
+
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      main: '#b8b8b8'
+    },
+    secondary: {
+      main: '#5cb646'
+    }
+  } 
+})
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -13,21 +25,26 @@ const GlobalStyle = createGlobalStyle`
     font-family: 'Roboto', sans-serif;
   }
 `;
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      main: '#b8b8b8',
+    },
+    secondary: {
+      main: '#5cb646',
+    },
+  },
+});
 
-/* const AppContainer = styled.div`
-  width: 100vw;
-  min-height: 100vh;
-  display: flex;
-` */
 
 const App = () => {
   return (
-    <>
+    <ThemeProvider theme={theme}>
       <GlobalStyle />
       <CartProvider>
         <Routes />
       </CartProvider>
-    </>
+    </ThemeProvider>
   );
 };
 

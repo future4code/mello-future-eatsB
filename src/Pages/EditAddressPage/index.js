@@ -1,14 +1,16 @@
 import React from 'react'
-import { Bar } from '../../Components/Header/Styled'
 import Header from '../../Components/Header'
+import EditAddress from '../../Components/EditAddress'
+import { Container } from './Styled'
 
 const EditAddressPage = () => {
   return(
-    <div>
-      <Header 
-        title='Endereço'/>
-
-    </div>
+    <Container>
+      <Header
+        title='Endereço'
+      />
+      <EditAddress />
+    </Container>
   )
 }
 
