@@ -15,7 +15,6 @@ import LandingPage from "../LandingPage"
 import EditProfilePage from "../EditProfilePage";
 import EditAddressPage from "../EditAddressPage";
 
-
 const Routes = () => {
   return (
     <BrowserRouter>
@@ -32,7 +31,6 @@ const Routes = () => {
           <SignUp />
         </Route>
 
-            
         <Route exact path="/address">
           <AdressPage/>
         </Route>
@@ -70,7 +68,6 @@ const Routes = () => {
         </Route>
 
         <Route exact path="/editaddress">
-          <EditAddressPage />
         </Route>
       </Switch>
     </BrowserRouter>
