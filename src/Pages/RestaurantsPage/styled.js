@@ -59,9 +59,8 @@ export const RestaurantPresentation = styled.div`
 export const ImgLogo = styled.img`
     width: 328px;
     height: 120px;
-    object-fit: contain;
+    object-fit: cover;
 
-    border: 1px solid red;
     border-radius: 8px 8px 0 0;
 `;
 
@@ -237,14 +236,16 @@ export const AddButton = styled.button`
 export const ImgMenu = styled.img`
     width: 96px;
     height: 112px;
-    object-fit: contain;
-    color: red;
-    border: 1px solid red;
+    object-fit: cover;
+    color: #B8B8B8;
+    font-size: 12px;
+    text-align: center;
     border-radius: 8px 0 0 8px;
 
     position: absolute;
     top: 58px;
     left: 0;
+    z-index: -1;
 `;
 
 export const BoxDescription = styled.div`
