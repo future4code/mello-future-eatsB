@@ -11,8 +11,9 @@ import ConfirmationPage from "../ConfirmationPage";
 import DoingOrderPage from "../DoingOrderPage";
 import ProfilePage from "../ProfilePage";
 import ShoppingTrolley from "../ShoppingTrolley";
-import LandingPage from "../LandingPage/index";
-import EditAddressPage from "../EditAddressPage/index";
+import LandingPage from "../LandingPage";
+import EditAddressPage from "../EditAddressPage";
+import EditProfilePage from "../EditProfilePage"
 
 const Routes = () => {
   return (
@@ -30,7 +31,6 @@ const Routes = () => {
           <SignUp />
         </Route>
 
-            
         <Route exact path="/address">
           <AdressPage/>
         </Route>
@@ -64,11 +64,11 @@ const Routes = () => {
         </Route>
 
         <Route exact path="/editaddress">
-          <EditAddress />
+          <EditAddressPage />
         </Route>
 
         <Route exact path="/editprofile">
-          <EditProfile />
+          <EditProfilePage />
         </Route>
       </Switch>
     </BrowserRouter>
