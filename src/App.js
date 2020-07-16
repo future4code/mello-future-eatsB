@@ -25,17 +25,6 @@ const GlobalStyle = createGlobalStyle`
     font-family: 'Roboto', sans-serif;
   }
 `;
-const theme = createMuiTheme({
-  palette: {
-    primary: {
-      main: '#b8b8b8',
-    },
-    secondary: {
-      main: '#5cb646',
-    },
-  },
-});
-
 
 const App = () => {
   return (

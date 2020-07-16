@@ -199,7 +199,7 @@ export const GreySmallText = styled(StandardSmallText)`
     letter-spacing: -0.29px;
 
     position: absolute;
-    bottom: 38px;
+    bottom: 30px;
     right: 16px;
     width: 200px;
     height: 30px;
