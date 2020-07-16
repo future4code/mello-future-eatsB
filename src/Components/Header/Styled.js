@@ -1,7 +1,8 @@
 import styled from 'styled-components'
+
 export const Bar = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   width: 100%;
   height: 64px;
@@ -12,3 +13,16 @@ export const Bar = styled.div`
   background-color: #ffffff;
   margin-bottom: 16px;
 `;
+
+export const BarContent = styled.div`
+  flex: 1;
+  display: flex;
+  padding: 16px;
+`
+
+export const Title = styled.div`
+  flex: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`
