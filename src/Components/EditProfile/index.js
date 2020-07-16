@@ -15,6 +15,7 @@ import { CloseRounded } from '@material-ui/icons'
 import ModalBody from "../Modal/modal";
 import { useForm } from "../../Hooks/useForm";
 
+
 const CpfMask = props => {
   const { inputRef, ...rest } = props
 
@@ -34,6 +35,7 @@ const CpfMask = props => {
     />
   )
 }
+
 CpfMask.propTypes = {
   inputRef: PropTypes.func.isRequired
 };
@@ -114,7 +116,6 @@ const EditProfile = () => {
           InputLabelProps={{shrink: true}}
         />
       </InputLocus>
-
       <SaveButton
         variant='contained'
         color='secondary'
@@ -130,4 +131,5 @@ const EditProfile = () => {
     </Container>
   )
 }
-export default EditProfile
+
+export default EditProfile;

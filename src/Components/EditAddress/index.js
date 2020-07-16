@@ -25,6 +25,7 @@ const EditAddress = () => {
     state: '',
     complement: ''
   })
+
   const handleChange = e => {
     const { name, value } = e.target
     onChange(name, value)
@@ -46,6 +47,7 @@ const EditAddress = () => {
 
     handleOpen(true)
   }
+  
   const body = (
     <ModalContainer>
       <span onClick={() => history.push('/profile')}> <CloseRounded /> </span>
@@ -72,6 +74,8 @@ const EditAddress = () => {
         <InputRectangle
           name='number'
           required
+          inputProps={{min: 0, inputMode: 'numeric'}}
+          type='number'
           label='Número'
           variant='outlined'
           value={form.number}
@@ -121,6 +125,7 @@ const EditAddress = () => {
           InputLabelProps={{shrink: true}}
         />
       </InputLocus>
+
       <InputLocus>
         <InputRectangle 
           name='state'
