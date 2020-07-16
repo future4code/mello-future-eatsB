@@ -16,18 +16,16 @@ export const updateAddress = async(street, number, neighbourhood, city, state, c
     complement: complement
   }
 
-  console.log(body)
-
-  // try{
-  //   const response = await futureEats.put(
-  //     '/address', 
-  //     body, 
-  //     axiosConfig
-  //   )
-  //   localStorage.removeItem("token")
-  //   localStorage.setItem("token", response.data.token)
-  //   console.log(response.data)
-  // }catch(e){
-  //   console.log(e)
-  // }
+  try{
+    const response = await futureEats.put(
+      '/address', 
+      body, 
+      axiosConfig
+    )
+    localStorage.removeItem("token")
+    localStorage.setItem("token", response.data.token)
+    console.log(response.data)
+  }catch(e){
+    console.log(e)
+  }
 }
