@@ -5,6 +5,17 @@ import CartProvider from "./Contexts/CartContext/provider";
 import { createMuiTheme, ThemeProvider } from '@material-ui/core'
 import ProfileProvider from "./Contexts/ProfileContext/Provider";
 
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      main: "#B8B8B8",
+    },
+    secondary: {
+      main: "#5CB646",
+    }
+  }
+})
+
 const GlobalStyle = createGlobalStyle`
   * {
     margin: 0;
