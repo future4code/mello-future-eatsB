@@ -1,10 +1,20 @@
 import React from 'react'
-import { Bar } from './Styled'
+import { Bar, BarContent, Title } from './Styled'
+import { ArrowBackIosRounded } from '@material-ui/icons'
 
 const Header = (props) => {
   return (
     <Bar>
-      {props.title}
+      <BarContent>
+        <ArrowBackIosRounded />
+      </BarContent>
+      <Title>
+        {props.title}
+      </Title>
+
+      <BarContent>
+
+      </BarContent>
     </Bar>
   )
 }
