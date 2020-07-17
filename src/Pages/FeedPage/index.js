@@ -1,12 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
-import SearchCard from "../../Components/SearchCard/SearchCard.js";
+
 import ProfileRestaurants from "../../Components/ProfileRestaurants/index.js";
 import MenuBar from "../../Components/MenuBar/MenuBar.js";
-import { Container } from "./styles";
+import { Container, SearchStyled } from "./styles";
 
 const FeedPage = () => {
   const [restaurants, setRestaurants] = useState([]);
+  const [search, setSearch] = useState("");
+  const inputsearch = useRef();
 
   useEffect(() => {
     const axiosConfig = {
@@ -25,16 +27,25 @@ const FeedPage = () => {
       });
   }, []);
 
+  const handleSearch = (e) => {
+    e.preventDefault();
+    setSearch(inputsearch.current.value);
+  };
+
   return (
     <Container>
-      <div>
-        <SearchCard />
-      </div>
+      <form onSubmit={handleSearch}>
+        <SearchStyled ref={inputsearch} placeholder="Restaurante" />
+        <button type="submit">Buscar</button>
+      </form>
       <div>
         <MenuBar />
       </div>
+
       {restaurants.map((restaurant) => {
-        return <ProfileRestaurants restaurants={restaurant} />;
+        if (search === "" || restaurant.name.includes(search)) {
+          return <ProfileRestaurants restaurants={restaurant} />;
+        }
       })}
     </Container>
   );
