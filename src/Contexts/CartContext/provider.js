@@ -1,28 +1,56 @@
-import React, { useReducer, useState } from "react";
+import React, { useReducer, useState, useEffect, useCallback } from "react";
 import CartContext from "./context";
+import futureEats from "../../Services/futureEats";
 
-const productsInCart = [];
+const productsInCart = JSON.parse(localStorage.getItem("cart")) || [];
 
 const reducer = (state, action) => {
   console.log(state);
   switch (action.type) {
     case "ADD_TO_CART":
       const searchIndex = state.findIndex(
-        (item) => item.id === action.product.id
+        (item) => item.id === action.product[0].id
       );
 
-      if (searchIndex > -1) {
+      const newItem = {
+        id: action.product[0].id,
+        name: action.product[0].name,
+        price: action.product[0].price,
+        photoUrl: action.product[0].photoUrl,
+        description: action.product[0].description,
+        quantity: action.quantity,
+      };
+
+      if (searchIndex !== -1) {
         state[searchIndex] = {
-          ...state[searchIndex],
-          quantity: state[searchIndex].quantity + 1,
+          id: state[searchIndex].id,
+          name: state[searchIndex].name,
+          price: state[searchIndex].price,
+          photoUrl: state[searchIndex].photoUrl,
+          description: state[searchIndex].description,
+          quantity:
+            Number(state[searchIndex].quantity) + Number(action.quantity),
         };
+
+        localStorage.setItem("cart", JSON.stringify(state));
+        return state;
       } else {
-        state.push({ ...action.product, quantity: 1 });
+        const updatedState = [...state, newItem];
+        localStorage.setItem("cart", JSON.stringify(updatedState));
+        return updatedState;
       }
-      return state;
 
     case "REMOVE_FROM_CART":
-      return state.filter((item) => item.id !== action.id);
+      const updatedState = state.filter((item) => item.id !== action.id);
+      localStorage.setItem("cart", JSON.stringify(updatedState));
+      return updatedState;
+
+    case "CLEAR":
+      localStorage.remove("cart");
+      localStorage.remove("restaurant");
+
+      return state;
+
     default:
       return state;
   }
@@ -30,19 +58,46 @@ const reducer = (state, action) => {
 
 export default function CartProvider({ children }) {
   const [state, dispatch] = useReducer(reducer, productsInCart);
+  const [restaurantID, setRestaurantID] = useState();
+  const [restaurantData, setRestaurantData] = useState(
+    JSON.parse(localStorage.getItem("restaurant")) || {}
+  );
 
-  const [restaurantData, setRestaurantData] = useState({
-    id: "",
-    name: "Hamburgueria do Fabio Assunção",
-    shipmentFee: 20,
-    shipmentTime: 10,
-    address: "Rua Joao Vilela, 22",
-  });
+  const totalPrice = useCallback(
+    () =>
+      state.reduce((total, num) => {
+        return Math.floor(
+          Number(total) + Number(num.price) * Number(num.quantity)
+        );
+      }, 0),
+    [state]
+  );
 
-  const totalPrice = () =>
-    state.reduce((total, num) => {
-      return Number(total) + Number(num.price) * Number(num.quantity);
-    }, 0);
+  useEffect(() => {
+    totalPrice();
+  }, [state, totalPrice]);
+
+  const getRestaurantDetail = async (restaurantId) => {
+    setRestaurantID(restaurantId);
+    const axiosConfig = {
+      headers: {
+        auth:
+          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImpXdFp0TjN5QUwzRG40OE96ZkU1IiwibmFtZSI6Ik1hcmlhIiwiZW1haWwiOiJtYXJpYUBnbWFpbC5jb20iLCJjcGYiOiIxMTEuMjIyLjMzMy00NCIsImhhc0FkZHJlc3MiOnRydWUsImFkZHJlc3MiOiJBdi4gQW5nw6lsaWNhLCAxODE0LCAzMDUgLSBIaWdpZW7Ds3BvbGlzIiwiaWF0IjoxNTk0NzcyNzExfQ.9812N7XBG1cLsRAzM-RmIIyKrrBI7LYpfJp2Q1TSVAY",
+      },
+    };
+
+    try {
+      const response = await futureEats.get(
+        `/restaurants/${restaurantId}`,
+        axiosConfig
+      );
+      setRestaurantData(response.data.restaurant);
+      localStorage.setItem(
+        "restaurant",
+        JSON.stringify(response.data.restaurant)
+      );
+    } catch (error) {}
+  };
 
   return (
     <CartContext.Provider
@@ -51,7 +106,8 @@ export default function CartProvider({ children }) {
         dispatch,
         totalPrice,
         restaurantData,
-        setRestaurantData,
+        getRestaurantDetail,
+        restaurantID,
       }}
     >
       {children}

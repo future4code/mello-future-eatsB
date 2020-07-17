@@ -8,12 +8,12 @@ import ProfileProvider from "./Contexts/ProfileContext/Provider";
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: '#b8b8b8'
+      main: "#B8B8B8",
     },
     secondary: {
-      main: '#5cb646'
+      main: "#5CB646",
     }
-  } 
+  }
 })
 
 const GlobalStyle = createGlobalStyle`

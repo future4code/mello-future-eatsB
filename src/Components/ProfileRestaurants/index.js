@@ -1,24 +1,24 @@
-import React from "react";
-import styled from 'styled-components';
+import React, { useReducer, useContext } from "react";
+import styled from "styled-components";
+import { useHistory } from "react-router-dom";
 
-const MainContainer = styled.div` 
-border: 1px solid black;
-border-radius: 3px;
-width: 650px;
-height: 450px;
-margin: 30px;
-`
+const MainContainer = styled.div`
+  width: 328px;
+  height: 188px;
+  border-radius: 8px;
+  border: solid 1px #b8b8b8;
+  margin-left: 16px;
+  margin-bottom: 8px;
+`;
 
 const ImgStyle = styled.img`
   width: 328px;
   height: 120px;
+  margin-top: 8px;
   object-fit: contain;
-
-`
+`;
 
 const RestaurantStyle = styled.p`
-  width: 296px;
-  height: 18px;
   font-family: Roboto;
   font-size: 16px;
   font-weight: normal;
@@ -27,11 +27,9 @@ const RestaurantStyle = styled.p`
   line-height: normal;
   letter-spacing: -0.39px;
   color: #5cb646;
-`
+`;
 
 const TimeDelivery = styled.p`
-  width: 148px;
-  height: 18px;
   font-family: Roboto;
   font-size: 16px;
   font-weight: normal;
@@ -40,11 +38,9 @@ const TimeDelivery = styled.p`
   line-height: normal;
   letter-spacing: -0.39px;
   color: #b8b8b8;
-`
+`;
 
 const Shipping = styled.p`
-  width: 140px;
-  height: 18px;
   font-family: Roboto;
   font-size: 16px;
   font-weight: normal;
@@ -52,22 +48,23 @@ const Shipping = styled.p`
   font-style: normal;
   line-height: normal;
   letter-spacing: -0.39px;
-  text-align: right;
   color: #b8b8b8;
-`
- 
+`;
 
 const ProfileRestaurants = (props) => {
-    
+  const history = useHistory();
+
+  const routeUser = () => {
+    history.push(`/restaurants/${props.restaurants.id}`);
+  };
 
   return (
-    <MainContainer>
-        <ImgStyle src={props.restaurants.logoUrl}/>
-        <RestaurantStyle>{props.restaurants.name} </RestaurantStyle>
-        <TimeDelivery>{props.restaurants.deliveryTime} min </TimeDelivery>
-        <Shipping>Frete {props.restaurants.shipping},00 </Shipping>
+    <MainContainer onClick={routeUser}>
+      <ImgStyle src={props.restaurants.logoUrl} />
+      <RestaurantStyle>{props.restaurants.name} </RestaurantStyle>
+      <TimeDelivery>{props.restaurants.deliveryTime} min </TimeDelivery>
+      <Shipping>Frete {props.restaurants.shipping},00 </Shipping>
     </MainContainer>
-   
   );
 };
 

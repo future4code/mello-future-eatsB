@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import CartContext from "../../../Contexts/CartContext/context";
 import { SaveButton } from "../../Common/Styled";
 
@@ -11,14 +11,21 @@ import {
   PaymentMethod,
 } from "./styles";
 import CartItem from "../CartItem/cartItem";
+import { placeOrder } from "./services";
 
 export default function CartBox() {
-  const { state, totalPrice, dispatch, restaurantData } = useContext(
-    CartContext
-  );
+  const {
+    state,
+    totalPrice,
+    dispatch,
+    restaurantData,
+    restaurantId,
+  } = useContext(CartContext);
+  const [paymentMethod, setMethod] = useState();
 
   const sendOrder = async (e) => {
-    //await placeOrder(state, paymentMethod, restaurantData.id);
+    e.preventDefault();
+    await placeOrder(state, paymentMethod, restaurantId);
   };
 
   return (
@@ -35,17 +42,18 @@ export default function CartBox() {
             <Place>
               <h3>{restaurantData.name}</h3>
               <p>{restaurantData.address}</p>
-              <p>{restaurantData.shipmentTime} minutos</p>
+              <p>{restaurantData.deliveryTime} minutos</p>
             </Place>
 
             {state.map((item) => {
+              console.log(state);
               return <CartItem key={item.id} {...item} dispatch={dispatch} />;
             })}
           </div>
         )}
       </OrderBox>
       <DeliveryTax>
-        <p>Frete: R${restaurantData.shipmentFee}</p>
+        <p>Frete: R$ {restaurantData.shipping}</p>
       </DeliveryTax>
       <PriceBox>
         <p>SUBTOTAL</p>
@@ -56,11 +64,25 @@ export default function CartBox() {
 
         <form action="">
           <div>
-            <input type="radio" name="method" value="Dinheiro" />
+            <input
+              onChange={(e) => {
+                setMethod(e.target.value);
+              }}
+              type="radio"
+              name="method"
+              value="Dinheiro"
+            />
             <label htmlFor=""> Dinheiro</label>
           </div>
           <div>
-            <input type="radio" name="method" value="Cartão de crédito" />
+            <input
+              onChange={(e) => {
+                setMethod(e.target.value);
+              }}
+              type="radio"
+              name="method"
+              value="Cartão de crédito"
+            />
             <label htmlFor=""> Cartão de crédito</label>
           </div>
           <SaveButton
