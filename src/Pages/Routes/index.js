@@ -24,6 +24,9 @@ const Routes = () => {
         <Route exact path="/">
           <LandingPage />
         </Route>
+        <Route exact path="/home">
+          <HomePage />
+        </Route>
         <Route exact path="/login">
           <LoginPage />
         </Route>
@@ -58,7 +61,7 @@ const Routes = () => {
           <EditProfilePage />
         </Route>
         <Route exact path="/editaddress">
-          {/* ?????????????????????????????????????? */}
+          <EditAddressPage />
         </Route>
       </Switch>
       <Footer />
