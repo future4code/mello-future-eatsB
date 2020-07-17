@@ -15,7 +15,6 @@ import { CloseRounded } from '@material-ui/icons'
 import ModalBody from "../Modal/modal";
 import { useForm } from "../../Hooks/useForm";
 
-
 const CpfMask = props => {
   const { inputRef, ...rest } = props
 
