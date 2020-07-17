@@ -3,13 +3,20 @@ import CartContext from "../../../Contexts/CartContext/context";
 import { SaveButton } from "../../Common/Styled";
 
 import {
+  TextBar,
   Address,
+  AddressShipping,
+  Street,
   OrderBox,
   Place,
+  RestaurantName,
+  AddressRestaurant,
+  TimeShipping,
   PriceBox,
   DeliveryTax,
   PaymentMethod,
-} from "./styles";
+} from "./styled";
+
 import CartItem from "../CartItem/cartItem";
 import { placeOrder } from "./services";
 
@@ -30,9 +37,10 @@ export default function CartBox() {
 
   return (
     <>
+      <TextBar>Meu carrinho</TextBar>
       <Address>
-        <p>Endereço de entrega</p>
-        <b>Rua Antonio Vilela, 22</b>
+        <AddressShipping>Endereço de entrega</AddressShipping>
+        <Street>Rua Antonio Vilela, 22</Street>
       </Address>
       <OrderBox>
         {state.length === 0 ? (
@@ -40,9 +48,9 @@ export default function CartBox() {
         ) : (
           <div id="list">
             <Place>
-              <h3>{restaurantData.name}</h3>
-              <p>{restaurantData.address}</p>
-              <p>{restaurantData.deliveryTime} minutos</p>
+              <RestaurantName>{restaurantData.name}</RestaurantName>
+              <AddressRestaurant>{restaurantData.address}</AddressRestaurant>
+              <TimeShipping>{restaurantData.deliveryTime} minutos</TimeShipping>
             </Place>
 
             {state.map((item) => {

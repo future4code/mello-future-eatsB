@@ -1,5 +1,14 @@
 import React from "react";
-import { Container } from "./styles";
+import { 
+  ItemCard,
+  ImgMenu,
+  BoxDescription,
+  QuantityButton,
+  GreenText,
+  GreySmallText,
+  BlackText,
+  RemoveButton
+} from "./styled";
 
 export default function CartItem({
   id,
@@ -12,18 +21,18 @@ export default function CartItem({
 }) {
   return (
     <>
-      <Container>
-        <div>
-          <img src={photoUrl} alt="" />
-        </div>
-        <h3>{name}</h3>
-        <p id="description">{description}</p>
-        <span>{quantity}</span>
-        <p id="price">R$ {price}</p>
-        <button onClick={() => dispatch({ type: "REMOVE_FROM_CART", id: id })}>
-          remover
-        </button>
-      </Container>
+      <ItemCard>
+        <ImgMenu src={photoUrl} alt="" />
+        <BoxDescription>
+          <QuantityButton>{quantity}</QuantityButton>
+          <GreenText>{name}</GreenText>
+          <GreySmallText id="description">{description}</GreySmallText>
+          <BlackText id="price">R$ {price}</BlackText>
+          <RemoveButton onClick={() => dispatch({ type: "REMOVE_FROM_CART", id: id })}>
+            remover
+          </RemoveButton>
+        </BoxDescription>
+      </ItemCard>
     </>
   );
 }

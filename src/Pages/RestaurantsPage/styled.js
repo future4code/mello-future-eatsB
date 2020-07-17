@@ -34,6 +34,8 @@ export const BackImg = styled.img`
 `;
 
 export const TextBar = styled.p`
+    width: 91px;
+    height: 19px;
     color: #000000;
     font-family: Roboto;
     font-size: 16px;
