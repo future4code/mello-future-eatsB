@@ -1,22 +1,22 @@
 import React, { useReducer, useContext } from "react";
-import styled from 'styled-components';
+import styled from "styled-components";
+import { useHistory } from "react-router-dom";
 
-
-const MainContainer = styled.div` 
+const MainContainer = styled.div`
   width: 328px;
   height: 188px;
   border-radius: 8px;
   border: solid 1px #b8b8b8;
   margin-left: 16px;
   margin-bottom: 8px;
-`
+`;
 
 const ImgStyle = styled.img`
   width: 328px;
   height: 120px;
   margin-top: 8px;
   object-fit: contain;
-`
+`;
 
 const RestaurantStyle = styled.p`
   font-family: Roboto;
@@ -27,8 +27,7 @@ const RestaurantStyle = styled.p`
   line-height: normal;
   letter-spacing: -0.39px;
   color: #5cb646;
- 
-`
+`;
 
 const TimeDelivery = styled.p`
   font-family: Roboto;
@@ -39,7 +38,7 @@ const TimeDelivery = styled.p`
   line-height: normal;
   letter-spacing: -0.39px;
   color: #b8b8b8;
-`
+`;
 
 const Shipping = styled.p`
   font-family: Roboto;
@@ -50,22 +49,22 @@ const Shipping = styled.p`
   line-height: normal;
   letter-spacing: -0.39px;
   color: #b8b8b8;
-`
-
-
-
+`;
 
 const ProfileRestaurants = (props) => {
+  const history = useHistory();
+
+  const routeUser = () => {
+    history.push(`/restaurants/${props.restaurants.id}`);
+  };
 
   return (
-    
-    <MainContainer>
-        <ImgStyle src={props.restaurants.logoUrl}/>
-        <RestaurantStyle>{props.restaurants.name} </RestaurantStyle>
-        <TimeDelivery>{props.restaurants.deliveryTime} min </TimeDelivery>
-        <Shipping>Frete {props.restaurants.shipping},00 </Shipping>
+    <MainContainer onClick={routeUser}>
+      <ImgStyle src={props.restaurants.logoUrl} />
+      <RestaurantStyle>{props.restaurants.name} </RestaurantStyle>
+      <TimeDelivery>{props.restaurants.deliveryTime} min </TimeDelivery>
+      <Shipping>Frete {props.restaurants.shipping},00 </Shipping>
     </MainContainer>
-    
   );
 };
 

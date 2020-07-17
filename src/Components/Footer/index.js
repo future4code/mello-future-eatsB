@@ -3,7 +3,7 @@ import { Container, SingleIcon } from "./Styled";
 import cartIcon from "../../Assets/img/Cart.svg";
 import profileIcon from "../../Assets/img/Profile.svg";
 import homeIcon from "../../Assets/img/Home.svg";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 const Footer = () => {
   const history = useHistory();
