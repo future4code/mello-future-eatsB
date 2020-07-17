@@ -19,13 +19,13 @@ export default function CartBox() {
     totalPrice,
     dispatch,
     restaurantData,
-    restaurantID,
+    restaurantId,
   } = useContext(CartContext);
   const [paymentMethod, setMethod] = useState();
 
   const sendOrder = async (e) => {
     e.preventDefault();
-    await placeOrder(state, paymentMethod, restaurantID);
+    await placeOrder(state, paymentMethod, restaurantId);
   };
 
   return (
