@@ -5,8 +5,8 @@ import {
   InputRectangle,
   SaveButton,
 } from "../Common/Styled";
-import { updateAddress } from './services'
-import { useForm } from "../../Hooks/UseForm";
+import { updateAddress } from './services';
+import useForm from "../../Hooks/useForm";
 
 const EditAddress = () => {
 
@@ -131,4 +131,4 @@ const EditAddress = () => {
   )
 }
 
-export default EditAddress
+export default EditAddress;
