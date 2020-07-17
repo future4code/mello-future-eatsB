@@ -1,8 +1,8 @@
 import React from "react";
 import { Switch, Route, BrowserRouter } from "react-router-dom";
-
-import Login from "../Login";
-import SignUp from "../SignUp";
+import HomePage from "../HomePage";
+import LoginPage from "../LoginPage";
+import SignUpPage from "../SignUpPage";
 import AdressPage from "../AdressPage";
 import FeedPage from "../FeedPage";
 import SearchPage from "../SearchPage";
@@ -25,10 +25,10 @@ const Routes = () => {
           <LandingPage />
         </Route>
         <Route exact path="/login">
-          <Login />
+          <LoginPage />
         </Route>
         <Route exact path="/signup">
-          <SignUp />
+          <SignUpPage />
         </Route>
         <Route exact path="/address">
           <AdressPage />
