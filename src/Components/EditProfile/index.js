@@ -8,7 +8,7 @@ import {
 import Cleave from 'cleave.js/react'
 import PropTypes from 'prop-types'
 import ProfileContext from "../../Contexts/ProfileContext/context";
-import { useForm } from "../../Hooks/UseForm";
+import useForm from "../../Hooks/useForm";
 import { updateProfile } from './services'
 
 const CpfMask = props => {
