@@ -1,9 +1,15 @@
 import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
-
 import ProfileRestaurants from "../../Components/ProfileRestaurants/index.js";
 import MenuBar from "../../Components/MenuBar/MenuBar.js";
-import { Container, SearchStyled } from "./styles";
+import Search from "../../Assets/img/Search.svg";
+import { 
+  Container,
+  TextBar,
+  SearchStyled,
+  ImgSearch,
+  ButtonSearch,
+} from "./styled";
 
 const FeedPage = () => {
   const [restaurants, setRestaurants] = useState([]);
@@ -34,9 +40,11 @@ const FeedPage = () => {
 
   return (
     <Container>
+      <TextBar>FutureEats</TextBar>
       <form onSubmit={handleSearch}>
         <SearchStyled ref={inputsearch} placeholder="Restaurante" />
-        <button type="submit">Buscar</button>
+        <ImgSearch src={Search} alt="SearchIcon"/>
+        <ButtonSearch type="submit">Buscar</ButtonSearch>
       </form>
       <div>
         <MenuBar />
