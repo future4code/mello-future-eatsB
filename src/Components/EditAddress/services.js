@@ -22,10 +22,11 @@ export const updateAddress = async(street, number, neighbourhood, city, state, c
       body, 
       axiosConfig
     )
+    
     localStorage.removeItem("token")
     localStorage.setItem("token", response.data.token)
-    console.log(response.data)
+    alert('Endereço alterado com sucesso')
   }catch(e){
-    console.log(e)
+    alert('Houve um erro ao tentar alterar o endereço.')
   }
 }

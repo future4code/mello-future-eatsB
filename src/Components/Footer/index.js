@@ -14,11 +14,11 @@ const Footer = () => {
       </SingleIcon>
 
       <SingleIcon>
-      <img src={cartIcon} alt='Icone Home' />
+        <img src={cartIcon} alt='Icone Cart' />
       </SingleIcon>
 
       <SingleIcon>
-      <img src={profileIcon} alt='Icone Home' />
+        <img src={profileIcon} alt='Icone Profile' />
       </SingleIcon>
     </Container>
   )

@@ -1,22 +1,18 @@
-import React, { useRef, useContext, useState } from "react";
+import React, { useRef, useContext } from "react";
 import {
   Container,
   InputLocus,
   InputRectangle,
-  SaveButton,
-  ModalContainer,
+  SaveButton
 } from "../Common/Styled";
 import Cleave from 'cleave.js/react'
 import PropTypes from 'prop-types'
 import ProfileContext from "../../Contexts/ProfileContext/context";
-import { updateProfile } from "./services";
-import { useHistory } from "react-router-dom";
-import { CloseRounded } from '@material-ui/icons'
-import ModalBody from "../Modal/modal";
-import { useForm } from "../../Hooks/useForm";
-
+import { useForm } from "../../Hooks/UseForm";
+import { updateProfile } from './services'
 
 const CpfMask = props => {
+
   const { inputRef, ...rest } = props
 
   return(
@@ -42,14 +38,12 @@ CpfMask.propTypes = {
 
 const EditProfile = () => {
 
-  const [ isOpen, setIsOpen ] = useState(false)
-  const history = useHistory()
-
   const { profileData } = useContext(
     ProfileContext
   );
 
   const myInput = useRef();
+
   const { form, onChange } = useForm({
     name: profileData.name,
     email: profileData.email,
@@ -61,20 +55,9 @@ const EditProfile = () => {
     onChange(name, value)
   }
 
-  const handleOpen = (bool) => {
-    setIsOpen(bool)
+  const handleUpdate = () => {
+    updateProfile(form.name, form.email, form.cpf)
   }
-
-  const sendProfileUpdate = async() => {
-    await updateProfile(form.name, form.email, form.cpf)
-    handleOpen(true)
-  }
-  const body = (
-    <ModalContainer>
-      <span onClick={() => history.push('/profile')}> <CloseRounded /> </span>
-      <div>Cadastro atualizado com sucesso!</div>
-    </ModalContainer>
-  )
 
   return(
     <Container>
@@ -119,15 +102,10 @@ const EditProfile = () => {
       <SaveButton
         variant='contained'
         color='secondary'
-        onClick={sendProfileUpdate}
+        onClick={handleUpdate}
       >
         Salvar
       </SaveButton>
-      <ModalBody 
-        open={isOpen}
-        close={() => handleOpen(false)}
-        body={body}
-      />
     </Container>
   )
 }

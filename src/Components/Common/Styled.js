@@ -33,25 +33,3 @@ export const SaveButton = styled(Button)`
   border-radius: 2px;
   background-color: #5cb646;
 `;
-
-export const ModalContainer = styled.div`
-  width: 300px;
-  height: 100px;
-  background-color: #FFFFFF;
-  margin: 200px auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  outline: none;
-
-  span {
-    flex: 1;
-    align-self: flex-end;
-    padding: 8px;
-  }
-
-  div {
-    flex: 1;
-  }
-`

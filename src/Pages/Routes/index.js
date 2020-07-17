@@ -20,6 +20,10 @@ const Routes = () => {
     <BrowserRouter>
       <Switch>
         <Route exact path="/">
+          <LandingPage />
+        </Route>
+
+        <Route exact path="/home">
           <HomePage />
         </Route>
 
@@ -68,6 +72,7 @@ const Routes = () => {
         </Route>
 
         <Route exact path="/editaddress">
+          <EditAddressPage />
         </Route>
       </Switch>
     </BrowserRouter>

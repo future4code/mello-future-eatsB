@@ -135,7 +135,7 @@ const RestaurantsPage = () => {
         <GreyTextShipping>Frete R${shippingPrice}</GreyTextShipping>
         <GreyTextAddress>{restaurantAddress}</GreyTextAddress>
       </RestaurantPresentation>
-     {products && products.map((product) => {
+      {products && products.map((product) => {
         return (
           <RestaurantMenu>
             <CategoryMenu>{product.category}</CategoryMenu>
