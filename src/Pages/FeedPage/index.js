@@ -6,9 +6,15 @@ import MenuBar from "../../Components/MenuBar/MenuBar.js";
 import styled from "styled-components";
 import FiltersContext from "../../Contexts/Filters";
 
+
+
 const MainContainer = styled.div`
   width: 360px;
   height: 640px;
+  border: 1px solid black;
+  margin-left: 600px;
+  margin-top: 40px;
+  overflow-x: auto;
 `
 
 const FeedPage = (props) => {
@@ -44,14 +50,13 @@ useEffect(()=>{
  
 
   return (
-
-  <MainContainer>
+    <MainContainer>
       <SearchCard/>
-      <MenuBar/>
-      {filteredRestaurants.map(restaurant=> {
-        return <ProfileRestaurants restaurants={restaurant}/>
-      })}
-  </MainContainer>  
+        <MenuBar/>
+        {restaurants.map(restaurant=> {
+          return <ProfileRestaurants restaurants={restaurant}/>
+        })}
+      </MainContainer>  
   );
 };
 

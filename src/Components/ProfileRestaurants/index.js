@@ -7,17 +7,18 @@ const MainContainer = styled.div`
   height: 188px;
   border-radius: 8px;
   border: solid 1px #b8b8b8;
+  margin-left: 16px;
+  margin-bottom: 8px;
 `
 
 const ImgStyle = styled.img`
   width: 328px;
   height: 120px;
+  margin-top: 8px;
   object-fit: contain;
 `
 
 const RestaurantStyle = styled.p`
-  width: 296px;
-  height: 18px;
   font-family: Roboto;
   font-size: 16px;
   font-weight: normal;
@@ -26,11 +27,10 @@ const RestaurantStyle = styled.p`
   line-height: normal;
   letter-spacing: -0.39px;
   color: #5cb646;
+ 
 `
 
 const TimeDelivery = styled.p`
-  width: 148px;
-  height: 18px;
   font-family: Roboto;
   font-size: 16px;
   font-weight: normal;
@@ -42,8 +42,6 @@ const TimeDelivery = styled.p`
 `
 
 const Shipping = styled.p`
-  width: 140px;
-  height: 18px;
   font-family: Roboto;
   font-size: 16px;
   font-weight: normal;
@@ -51,9 +49,10 @@ const Shipping = styled.p`
   font-style: normal;
   line-height: normal;
   letter-spacing: -0.39px;
-  text-align: right;
   color: #b8b8b8;
 `
+
+
 
 
 const ProfileRestaurants = (props) => {

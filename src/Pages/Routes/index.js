@@ -20,7 +20,7 @@ const Routes = () => {
     <BrowserRouter>
       <Switch>
         <Route exact path="/">
-          <HomePage />
+          <FeedPage/>
         </Route>
 
         <Route exact path="/login">
@@ -33,10 +33,6 @@ const Routes = () => {
 
         <Route exact path="/address">
           <AdressPage/>
-        </Route>
-
-        <Route exact path="/feed">
-          <FeedPage />
         </Route>
 
         <Route exact path="/search">

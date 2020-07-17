@@ -9,6 +9,8 @@ const SearchStyled = styled.input`
   height: 56px;
   border-radius: 2px;
   border: solid 1px #b8b8b8;
+  margin-left: 16px;
+  margin-top: 72px;
   `
 
   
@@ -33,7 +35,6 @@ const SearchCard = (props) => {
     <div>
       <form onSubmit>
         <SearchStyled placeholder="Restaurante" onChange={handleChange} value={productSearch}/>
-        <button type="submit" onClick={applyFilter}>Pesquisar</button>
       </form>
    
     </div>

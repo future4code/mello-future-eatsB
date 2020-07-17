@@ -7,6 +7,7 @@ const Container = styled.div`
   height: 42px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
+  margin-top: 20px;
  
 `
 
@@ -26,6 +27,7 @@ const MenuBar = () => {
   
 
   return (
+
     <Container>
         <Itens>Burguer</Itens>
         <Itens>Asiático</Itens>

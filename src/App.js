@@ -4,6 +4,7 @@ import {createGlobalStyle} from 'styled-components';
 import Filters, {initialState} from './Filters/Filters'
 import FeedPage from "./Pages/FeedPage";
 import FiltersContext from './Contexts/Filters';
+import RestaurantsPage from "./Pages/RestaurantsPage";
 
 
 
@@ -17,7 +18,7 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-/* COMENTEI A FEEDPAGE PARA EVITAR CONFLITOS */
+
 
 const App = () => {
   
@@ -30,7 +31,6 @@ const App = () => {
     <FiltersContext.Provider value={{ filters: filterState, dispatch: filtersDispatch }}>
        <div>
             <GlobalStyle />
-            {/*<FeedPage/>*/}
             <Routes/>
        </div>
 
