@@ -1,22 +1,40 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React, { useState, useEffect, useContext } from "react";
+
 import { useHistory, useParams } from "react-router";
-import Back from "../../Assets/img/Back.svg"
-import { Container, Bar, BackImg, TextBar, 
-  RestaurantPresentation, ImgLogo, GreenTextTitle, 
-  GreyTextCategory, GreyTextTime, GreyTextShipping,
-  GreyTextAddress, RestaurantMenu, ItemCard, 
-  CategoryMenu, GreenText, GreySmallText, BlackText, 
-  AddButton, ImgMenu, BoxDescription, QuantityButton, 
-  ModalDiv, SelectStyle, OptionStyle, BlackTextModal,
-  GreenTextModal } 
-  from './styled';
+import Back from "../../Assets/img/Back.svg";
+import {
+  Container,
+  Bar,
+  BackImg,
+  TextBar,
+  RestaurantPresentation,
+  ImgLogo,
+  GreenTextTitle,
+  GreyTextCategory,
+  GreyTextTime,
+  GreyTextShipping,
+  GreyTextAddress,
+  RestaurantMenu,
+  ItemCard,
+  CategoryMenu,
+  GreenText,
+  GreySmallText,
+  BlackText,
+  AddButton,
+  ImgMenu,
+  BoxDescription,
+  QuantityButton,
+  ModalDiv,
+  SelectStyle,
+  OptionStyle,
+  BlackTextModal,
+  GreenTextModal,
+} from "./styled";
 
-import { makeStyles } from '@material-ui/core/styles';
-import Modal from '@material-ui/core/Modal';
-
-const baseUrl = 
-    "https://us-central1-missao-newton.cloudfunctions.net/futureEatsB"
+import { makeStyles } from "@material-ui/core/styles";
+import Modal from "@material-ui/core/Modal";
+import CartContext from "../../Contexts/CartContext/context";
+import futureEats from "../../Services/futureEats";
 
 function getModalStyle() {
   const top = 50;
@@ -31,12 +49,12 @@ function getModalStyle() {
 
 const useStyles = makeStyles((theme) => ({
   modal: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
   },
   paper: {
-    position: 'absolute',
+    position: "absolute",
     width: 328,
     height: 216,
     backgroundColor: theme.palette.background.paper,
@@ -46,41 +64,50 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const RestaurantsPage = () => {
-
   const [products, setProducts] = useState([]);
-  const [logoUrl, setLogoUrl] = useState("")
+  const [logoUrl, setLogoUrl] = useState("");
   const [restaurantName, setRestaurantName] = useState("");
   const [category, setCategory] = useState("");
   const [deliveryTime, setDeliveryTime] = useState("");
   const [shippingPrice, setShippingPrice] = useState("");
   const [restaurantAddress, setRestaurantAddress] = useState("");
+  const [productAmount, setProductAmount] = useState(1);
 
-  const { restaurantId } = useParams(); 
+  const [selectedProduct, setSelectedProduct] = useState("");
+
+  const { getRestaurantDetail: sendRestaurantDetail, dispatch } = useContext(
+    CartContext
+  );
+  const { restaurantId } = useParams();
   const history = useHistory();
 
   useEffect(() => {
     getRestaurantDetail();
-  }, [])
-  
-  const getRestaurantDetail = async() => {
+    // eslint-disable-next-line
+  }, []);
 
+  const getRestaurantDetail = async () => {
     const axiosConfig = {
-        headers: {
-            auth: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImpXdFp0TjN5QUwzRG40OE96ZkU1IiwibmFtZSI6Ik1hcmlhIiwiZW1haWwiOiJtYXJpYUBnbWFpbC5jb20iLCJjcGYiOiIxMTEuMjIyLjMzMy00NCIsImhhc0FkZHJlc3MiOnRydWUsImFkZHJlc3MiOiJBdi4gQW5nw6lsaWNhLCAxODE0LCAzMDUgLSBIaWdpZW7Ds3BvbGlzIiwiaWF0IjoxNTk0NzcyNzExfQ.9812N7XBG1cLsRAzM-RmIIyKrrBI7LYpfJp2Q1TSVAY",
-        }
+      headers: {
+        auth:
+          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImpXdFp0TjN5QUwzRG40OE96ZkU1IiwibmFtZSI6Ik1hcmlhIiwiZW1haWwiOiJtYXJpYUBnbWFpbC5jb20iLCJjcGYiOiIxMTEuMjIyLjMzMy00NCIsImhhc0FkZHJlc3MiOnRydWUsImFkZHJlc3MiOiJBdi4gQW5nw6lsaWNhLCAxODE0LCAzMDUgLSBIaWdpZW7Ds3BvbGlzIiwiaWF0IjoxNTk0NzcyNzExfQ.9812N7XBG1cLsRAzM-RmIIyKrrBI7LYpfJp2Q1TSVAY",
+      },
     };
 
     try {
-        const response = await axios.get(`${baseUrl}/restaurants/${restaurantId}`, axiosConfig)
-        setProducts(response.data.restaurant.products)
-        setLogoUrl(response.data.restaurant.logoUrl)
-        setRestaurantName(response.data.restaurant.name)
-        setCategory(response.data.restaurant.category)
-        setDeliveryTime(response.data.restaurant.deliveryTime)
-        setShippingPrice(response.data.restaurant.shipping)
-        setRestaurantAddress(response.data.restaurant.address)
-    } catch(error) {
-        console.log(error)
+      const response = await futureEats.get(
+        `restaurants/${restaurantId}`,
+        axiosConfig
+      );
+      setProducts(response.data.restaurant.products);
+      setLogoUrl(response.data.restaurant.logoUrl);
+      setRestaurantName(response.data.restaurant.name);
+      setCategory(response.data.restaurant.category);
+      setDeliveryTime(response.data.restaurant.deliveryTime);
+      setShippingPrice(response.data.restaurant.shipping);
+      setRestaurantAddress(response.data.restaurant.address);
+    } catch (error) {
+      console.log(error);
     }
   };
 
@@ -93,7 +120,8 @@ const RestaurantsPage = () => {
   const [modalStyle] = React.useState(getModalStyle);
   const [open, setOpen] = React.useState(false);
 
-  const handleOpen = () => {
+  const handleOpen = (id) => () => {
+    setSelectedProduct(products.filter((item) => item.id === id));
     setOpen(true);
   };
 
@@ -101,61 +129,79 @@ const RestaurantsPage = () => {
     setOpen(false);
   };
 
+  const sendToCart = () => {
+    sendRestaurantDetail(restaurantId);
+
+    dispatch({
+      type: "ADD_TO_CART",
+      product: selectedProduct,
+      quantity: productAmount,
+    });
+
+    handleClose();
+  };
+
   const body = (
     <ModalDiv style={modalStyle} className={classes.paper}>
-      <BlackTextModal id="simple-modal-description">Selecione a quantidade desejada</BlackTextModal>
-      <SelectStyle>
-        <OptionStyle>0</OptionStyle>
-        <OptionStyle>1</OptionStyle>
-        <OptionStyle>2</OptionStyle>
-        <OptionStyle>3</OptionStyle>
-        <OptionStyle>4</OptionStyle>
-        <OptionStyle>5</OptionStyle>
-        <OptionStyle>6</OptionStyle>
-        <OptionStyle>7</OptionStyle>
-        <OptionStyle>8</OptionStyle>
-        <OptionStyle>9</OptionStyle>
-        <OptionStyle>10</OptionStyle>
-      </ SelectStyle>
-      <GreenTextModal>ADICIONAR AO CARRINHO</GreenTextModal>
+      <BlackTextModal id="simple-modal-description">
+        Selecione a quantidade desejada
+      </BlackTextModal>
+      <SelectStyle onChange={(e) => setProductAmount(e.target.value)}>
+        <OptionStyle value={1}>1</OptionStyle>
+        <OptionStyle value={2}>2</OptionStyle>
+        <OptionStyle value={3}>3</OptionStyle>
+        <OptionStyle value={4}>4</OptionStyle>
+        <OptionStyle value={5}>5</OptionStyle>
+        <OptionStyle value={6}>6</OptionStyle>
+        <OptionStyle value={7}>7</OptionStyle>
+        <OptionStyle value={8}>8</OptionStyle>
+        <OptionStyle value={9}>9</OptionStyle>
+        <OptionStyle value={10}>10</OptionStyle>
+      </SelectStyle>
+      <GreenTextModal onClick={sendToCart}>
+        ADICIONAR AO CARRINHO
+      </GreenTextModal>
     </ModalDiv>
   );
 
   return (
     <Container>
       <Bar>
-        <BackImg onClick={backToFeed} src={Back} alt="Drop Right"/>
+        <BackImg onClick={backToFeed} src={Back} alt="Drop Right" />
         <TextBar>Restaurante</TextBar>
       </Bar>
       <RestaurantPresentation>
-        <ImgLogo src={logoUrl} alt="Logo"/>
+        <ImgLogo src={logoUrl} alt="Logo" />
         <GreenTextTitle>{restaurantName}</GreenTextTitle>
         <GreyTextCategory>{category}</GreyTextCategory>
         <GreyTextTime>{deliveryTime} min</GreyTextTime>
         <GreyTextShipping>Frete R${shippingPrice}</GreyTextShipping>
         <GreyTextAddress>{restaurantAddress}</GreyTextAddress>
       </RestaurantPresentation>
-     {products && products.map((product) => {
-        return (
-          <RestaurantMenu>
-            <CategoryMenu>{product.category}</CategoryMenu>
-            <ItemCard>
-              <ImgMenu 
-                src={product.photoUrl}
-                srcSet={`${product.photoUrl}@2x.png 2x, ${product.photoUrl}@3x.png 3x`}
-                alt="ImgFood"         
-              />
-              <BoxDescription>
-                <QuantityButton>1</QuantityButton>
-                <GreenText>{product.name}</GreenText>
-                <GreySmallText>{product.description}</GreySmallText>
-                <BlackText>R${product.price}</BlackText>
-                <AddButton type="button" onClick={handleOpen}>adicionar</AddButton>
-              </BoxDescription>
-            </ItemCard>
-          </RestaurantMenu>
-        )
-      })} 
+      {products &&
+        products.map((product) => {
+          return (
+            <RestaurantMenu>
+              <CategoryMenu>{product.category}</CategoryMenu>
+              <ItemCard>
+                <ImgMenu
+                  src={product.photoUrl}
+                  srcSet={`${product.photoUrl}@2x.png 2x, ${product.photoUrl}@3x.png 3x`}
+                  alt="ImgFood"
+                />
+                <BoxDescription>
+                  <QuantityButton>1</QuantityButton>
+                  <GreenText>{product.name}</GreenText>
+                  <GreySmallText>{product.description}</GreySmallText>
+                  <BlackText>R${product.price}</BlackText>
+                  <AddButton type="button" onClick={handleOpen(product.id)}>
+                    adicionar
+                  </AddButton>
+                </BoxDescription>
+              </ItemCard>
+            </RestaurantMenu>
+          );
+        })}
       {/* ------------------------------- */}
       <div>
         <Modal
