@@ -3,6 +3,7 @@ import Routes from "./Pages/Routes";
 import {createGlobalStyle} from 'styled-components';
 import CartProvider from "./Contexts/CartContext/provider";
 import { createMuiTheme, ThemeProvider } from '@material-ui/core'
+import ProfileProvider from "./Contexts/ProfileContext/Provider";
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -14,24 +15,15 @@ const GlobalStyle = createGlobalStyle`
     font-family: 'Roboto', sans-serif;
   }
 `;
-const theme = createMuiTheme({
-  palette: {
-    primary: {
-      main: '#b8b8b8',
-    },
-    secondary: {
-      main: '#5cb646',
-    },
-  },
-});
-
 
 const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
       <CartProvider>
-        <Routes />
+        <ProfileProvider>
+          <Routes />
+        </ProfileProvider>
       </CartProvider>
     </ThemeProvider>
   );

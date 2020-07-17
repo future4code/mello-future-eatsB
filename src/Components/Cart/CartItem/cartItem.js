@@ -19,7 +19,7 @@ export default function CartItem({
         <h3>{name}</h3>
         <p id="description">{description}</p>
         <span>{quantity}</span>
-        <p id="price">R$ {price * quantity}</p>
+        <p id="price">R$ {price}</p>
         <button onClick={() => dispatch({ type: "REMOVE_FROM_CART", id: id })}>
           remover
         </button>

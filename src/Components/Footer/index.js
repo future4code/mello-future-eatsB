@@ -1,27 +1,43 @@
-import React from 'react'
-import { Container, SingleIcon } from './Styled'
-import cartIcon from '../../Assets/img/Cart.svg'
-import profileIcon from '../../Assets/img/Profile.svg'
-import homeIcon from '../../Assets/img/Home.svg'
-
-
+import React from "react";
+import { Container, SingleIcon } from "./Styled";
+import cartIcon from "../../Assets/img/Cart.svg";
+import profileIcon from "../../Assets/img/Profile.svg";
+import homeIcon from "../../Assets/img/Home.svg";
+import { Link, useHistory } from "react-router-dom";
 
 const Footer = () => {
-  return(
+  const history = useHistory();
+
+  const routeUser = (action) => () => {
+    switch (action) {
+      case 1:
+        return history.push("/feed");
+
+      case 2:
+        return history.push("/carrinho");
+
+      case 3:
+        return history.push("/profile");
+      default:
+        break;
+    }
+  };
+
+  return (
     <Container>
-      <SingleIcon>
-        <img src={homeIcon} alt='Icone Home' />
+      <SingleIcon onClick={routeUser(1)}>
+        <img src={homeIcon} alt="Icone Home" />
       </SingleIcon>
 
-      <SingleIcon>
-      <img src={cartIcon} alt='Icone Home' />
+      <SingleIcon onClick={routeUser(2)}>
+        <img src={cartIcon} alt="Icone Home" />
       </SingleIcon>
 
-      <SingleIcon>
-      <img src={profileIcon} alt='Icone Home' />
+      <SingleIcon onClick={routeUser(3)}>
+        <img src={profileIcon} alt="Icone Home" />
       </SingleIcon>
     </Container>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;
