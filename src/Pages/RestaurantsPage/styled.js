@@ -66,7 +66,7 @@ export const ImgLogo = styled.img`
 
 export const RestaurantMenu = styled.div`
     position: relative;
-    top: 309px;
+    top: 230px;
 
     display: flex;
     flex-direction: column;
@@ -300,7 +300,7 @@ export const SelectStyle = styled.select`
     appearance: none;       /* remove default arrow */
     background-image: url(${Dropdown});   /* add custom arrow */
     background-repeat: no-repeat;
-    background-position: 258px center;
+    background-position: 255px center;
 `;
 
 export const OptionStyle = styled.option`

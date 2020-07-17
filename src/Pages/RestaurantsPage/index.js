@@ -72,7 +72,6 @@ const RestaurantsPage = () => {
   const [shippingPrice, setShippingPrice] = useState("");
   const [restaurantAddress, setRestaurantAddress] = useState("");
   const [productAmount, setProductAmount] = useState(1);
-
   const [selectedProduct, setSelectedProduct] = useState("");
 
   const { getRestaurantDetail: sendRestaurantDetail, dispatch } = useContext(
