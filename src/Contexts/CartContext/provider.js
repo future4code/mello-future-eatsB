@@ -31,7 +31,7 @@ const reducer = (state, action) => {
           quantity:
             Number(state[searchIndex].quantity) + Number(action.quantity),
         };
-        
+
         localStorage.setItem("cart", JSON.stringify(state));
         return state;
       } else {
@@ -49,7 +49,7 @@ const reducer = (state, action) => {
       localStorage.remove("cart");
       localStorage.remove("restaurant");
 
-      return [];
+      return state;
 
     default:
       return state;

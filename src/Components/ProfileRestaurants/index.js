@@ -1,25 +1,24 @@
-import React from "react";
+import React, { useReducer, useContext } from "react";
 import styled from "styled-components";
 import { useHistory } from "react-router-dom";
 
 const MainContainer = styled.div`
-  border: 1px solid black;
-  border-radius: 3px;
-  width: 200px;
-
-  height: 250px;
-  margin: 30px;
+  width: 328px;
+  height: 188px;
+  border-radius: 8px;
+  border: solid 1px #b8b8b8;
+  margin-left: 16px;
+  margin-bottom: 8px;
 `;
 
 const ImgStyle = styled.img`
-  width: 100%;
+  width: 328px;
   height: 120px;
+  margin-top: 8px;
   object-fit: contain;
 `;
 
 const RestaurantStyle = styled.p`
-  width: 100%;
-  height: 18px;
   font-family: Roboto;
   font-size: 16px;
   font-weight: normal;
@@ -31,8 +30,6 @@ const RestaurantStyle = styled.p`
 `;
 
 const TimeDelivery = styled.p`
-  width: 148px;
-  height: 18px;
   font-family: Roboto;
   font-size: 16px;
   font-weight: normal;
@@ -44,8 +41,6 @@ const TimeDelivery = styled.p`
 `;
 
 const Shipping = styled.p`
-  width: 140px;
-  height: 18px;
   font-family: Roboto;
   font-size: 16px;
   font-weight: normal;
@@ -53,7 +48,6 @@ const Shipping = styled.p`
   font-style: normal;
   line-height: normal;
   letter-spacing: -0.39px;
-  text-align: right;
   color: #b8b8b8;
 `;
 
