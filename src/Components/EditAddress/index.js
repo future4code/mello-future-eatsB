@@ -1,14 +1,25 @@
 import React from "react";
 import {
   Container,
+  Bar,
+  BackImg,
+  TextAddress,
   InputLocus,
-  InputRectangle,
+  InputRectangle1,
+  InputRectangle2,
+  InputRectangle3,
+  InputRectangle4,
+  InputRectangle5,
+  InputRectangle6,
   SaveButton,
 } from "../Common/styled";
+import { useHistory } from "react-router-dom";
 import { updateAddress } from './services';
 import useForm from "../../Hooks/useForm";
+import Back from "../../Assets/img/Back.svg";
 
 const EditAddress = () => {
+  const history = useHistory();
 
   const { form, onChange } = useForm({
     street: '',
@@ -35,10 +46,18 @@ const EditAddress = () => {
     )
   }
   
+  const backToLogin = () => {
+    history.push("/login");
+  };
+
   return(
     <Container>
+      <Bar>
+        <BackImg onClick={backToLogin} src={Back} alt="Drop Right" />
+      </Bar>
+      <TextAddress>Meu endereço</TextAddress>
       <InputLocus>
-        <InputRectangle
+        <InputRectangle1
           name='street'
           required
           label='Logradouro'
@@ -46,12 +65,13 @@ const EditAddress = () => {
           value={form.street}
           color='secondary'
           onChange={handleChange}
+          placeholder='Rua/Av.'
           InputLabelProps={{shrink: true}}
           />
       </InputLocus>
 
       <InputLocus>
-        <InputRectangle
+        <InputRectangle2
           name='number'
           required
           inputProps={{min: 0, inputMode: 'numeric'}}
@@ -61,26 +81,26 @@ const EditAddress = () => {
           value={form.number}
           color='secondary'
           onChange={handleChange}
-          placeholder='Ex. 0'
+          placeholder='Número'
           InputLabelProps={{shrink: true}}
         />
       </InputLocus>
 
         <InputLocus>
-      <InputRectangle
+      <InputRectangle3
         name='complement'
         label='Complemento'
         variant='outlined'
         value={form.complement}
         color='secondary'
         onChange={handleChange}
-        placeholder='Ex. apto/bloco'
+        placeholder='Apto./Bloco'
         InputLabelProps={{shrink: true}}
       />
       </InputLocus>
 
       <InputLocus>
-      <InputRectangle 
+      <InputRectangle4 
         name='neighbourhood'
         required
         label='Bairro'
@@ -88,12 +108,13 @@ const EditAddress = () => {
         value={form.neighbourhood}
         color='secondary'
         onChange={handleChange}
+        placeholder='Bairro'
         InputLabelProps={{shrink: true}}
       />
       </InputLocus>
 
       <InputLocus>
-        <InputRectangle 
+        <InputRectangle5
           name='city'
           required
           label='Cidade'
@@ -101,12 +122,13 @@ const EditAddress = () => {
           value={form.city}
           color='secondary'
           onChange={handleChange}
+          placeholder='Cidade'
           InputLabelProps={{shrink: true}}
         />
       </InputLocus>
 
       <InputLocus>
-        <InputRectangle 
+        <InputRectangle6 
           name='state'
           required
           label='Estado'
@@ -115,7 +137,7 @@ const EditAddress = () => {
           color='secondary'
           onChange={handleChange}
           inputProps={{maxLength: 2}}
-          placeholder='Ex. SP'
+          placeholder='Estado'
           InputLabelProps={{shrink: true}}
         />
       </InputLocus>

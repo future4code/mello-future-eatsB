@@ -8,6 +8,34 @@ export const Container = styled.div`
   width: 375px;
 `;
 
+export const Bar = styled.div`
+    top: 0;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 64px;
+    border-bottom: 0.5px solid rgba(0, 0, 0, 0.25);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0.5px 0 0 var(--black-25);
+    background-color: #ffffff;
+`;
+
+export const DivMenuBar = styled.div`
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: -0.39px;
+  text-align: center;
+  color: #000000;
+  position: absolute;
+  top: 148px;
+`;
+
 export const TextBar = styled.p`
     width: 91px;
     height: 19px;

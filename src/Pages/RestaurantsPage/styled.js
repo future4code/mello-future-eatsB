@@ -68,7 +68,7 @@ export const ImgLogo = styled.img`
 
 export const RestaurantMenu = styled.div`
     position: relative;
-    top: 230px;
+    top: 310px;
 
     display: flex;
     flex-direction: column;

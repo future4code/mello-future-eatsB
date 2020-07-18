@@ -19,7 +19,6 @@ import LoginRoute from "../PrivateRoute/loginRoute";
 const Routes = () => {
   return (
     <>
-      <Header />
       <BrowserRouter>
         <Switch>
           <LoginRoute exact path="/">
