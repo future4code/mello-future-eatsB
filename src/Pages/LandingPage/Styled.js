@@ -12,12 +12,14 @@ const OpenUp = keyframes`
 
 export const Container = styled.div`
   display: flex;
-  height: 812px;
+  width: 360px;
+  height: 834px;
   background-color: black;
   justify-content: center;
   align-items: center;
-
   img {
     animation: ${OpenUp} 3s;
+    width: 126px;
+    height: 65px;
   }
 `;
