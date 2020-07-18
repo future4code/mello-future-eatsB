@@ -88,7 +88,7 @@ const RestaurantsPage = () => {
   const getRestaurantDetail = async () => {
     const axiosConfig = {
       headers: {
-        auth: localStorage.getItem("token"),
+        auth: String(localStorage.getItem("token")),
       },
     };
 

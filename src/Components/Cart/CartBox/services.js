@@ -3,7 +3,7 @@ import futureEats from "../../../Services/futureEats";
 export const placeOrder = (state, paymentMethod, restaurantId) => {
   const axiosConfig = {
     headers: {
-      auth: localStorage.getItem("token"),
+      auth: String(localStorage.getItem("token")),
     },
   };
 

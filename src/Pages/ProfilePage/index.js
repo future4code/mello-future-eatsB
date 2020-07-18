@@ -20,7 +20,7 @@ const ProfilePage = () => {
     try {
       const response = await futureEats.get("/profile", {
         headers: {
-          auth: localStorage.getItem("token"),
+          auth: String(localStorage.getItem("token")),
         },
       });
       setLoading(false);
@@ -32,7 +32,7 @@ const ProfilePage = () => {
     try {
       const response = await futureEats.option("/orders/history", {
         headers: {
-          auth: localStorage.getItem("token"),
+          auth: String(localStorage.getItem("token")),
         },
       });
       setLoading(false);

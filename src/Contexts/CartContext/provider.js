@@ -71,7 +71,7 @@ export default function CartProvider({ children }) {
   const getRestaurantDetail = async (restaurantId) => {
     const axiosConfig = {
       headers: {
-        auth: localStorage.getItem("token"),
+        auth: String(localStorage.getItem("token")),
       },
     };
 

@@ -40,7 +40,7 @@ export default function CartBox() {
     try {
       const response = await futureEats.get("/profile", {
         headers: {
-          auth: localStorage.getItem("token"),
+          auth: String(localStorage.getItem("token")),
         },
       });
 
