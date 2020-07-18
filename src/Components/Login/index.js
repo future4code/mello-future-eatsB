@@ -16,7 +16,7 @@ import {
   SaveButton,
   Signup,
   StyledLink
-} from './styled'
+} from './styled';
 
 const baseUrl = "https://us-central1-missao-newton.cloudfunctions.net/futureEatsB";
 
