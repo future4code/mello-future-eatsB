@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 import CartContext from "../../../Contexts/CartContext/context";
-import { SaveButton } from "../../Common/Styled";
+import { SaveButton } from "../../Common/styled";
 
 import {
   TextBar,
