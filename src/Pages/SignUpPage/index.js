@@ -1,16 +1,13 @@
-import React from 'react'
-import SignUp from '../../Components/SignUp'
-import Header from '../../Components/Header'
-import { Container } from '@material-ui/core'
-
+import React from "react";
+import SignUp from "../../Components/SignUp";
+import { Container } from "@material-ui/core";
 
 const SignUpPage = () => {
-  return(
-      <Container>
-        <Header />
-        <SignUp />
-      </Container> 
-  )
-}
+  return (
+    <Container>
+      <SignUp />
+    </Container>
+  );
+};
 
-export default SignUpPage
+export default SignUpPage;

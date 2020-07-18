@@ -13,11 +13,13 @@ export const placeOrder = (state, paymentMethod, restaurantId) => {
     products: state.map((item) => {
       return {
         id: item.id,
-        quantity: item.quantity,
+        quantity: Number(item.quantity),
       };
     }),
     paymentMethod: paymentMethod,
   };
+
+  console.log(body, restaurantId, `/restaurants/${restaurantId}/order`);
 
   try {
     const response = futureEats.post(
