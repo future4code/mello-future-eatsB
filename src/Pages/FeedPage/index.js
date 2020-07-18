@@ -3,7 +3,7 @@ import axios from "axios";
 import ProfileRestaurants from "../../Components/ProfileRestaurants/index.js";
 import MenuBar from "../../Components/MenuBar/MenuBar.js";
 import Search from "../../Assets/img/Search.svg";
-import { 
+import {
   Container,
   TextBar,
   SearchStyled,
@@ -19,8 +19,7 @@ const FeedPage = () => {
   useEffect(() => {
     const axiosConfig = {
       headers: {
-        auth:
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImRtZUwxQ1FZZHM2Y0FUcm41Qm9sIiwibmFtZSI6IkFzdHJvZGV2IiwiZW1haWwiOiJhc3Ryb2RldkBmdXR1cmU0LmNvbSIsImNwZiI6IjExMS4xMTEuMTExLTExIiwiaGFzQWRkcmVzcyI6dHJ1ZSwiYWRkcmVzcyI6IlIuIEFmb25zbyBCcmF6LCAxNzcsIDcxIC0gVmlsYSBOLiBDb25jZWnDp8OjbyIsImlhdCI6MTU5NDc1NDA5Mn0.5GNXUVGMLFBcZG7NCWZ-jxuuZfhZog-NaMKc4H0xqk4",
+        auth: localStorage.getItem("token"),
       },
     };
     axios
@@ -43,7 +42,7 @@ const FeedPage = () => {
       <TextBar>FutureEats</TextBar>
       <form onSubmit={handleSearch}>
         <SearchStyled ref={inputsearch} placeholder="Restaurante" />
-        <ImgSearch src={Search} alt="SearchIcon"/>
+        <ImgSearch src={Search} alt="SearchIcon" />
         <ButtonSearch type="submit">Buscar</ButtonSearch>
       </form>
       <div>

@@ -4,10 +4,8 @@ import LoginPage from "../LoginPage";
 import SignUpPage from "../SignUpPage";
 import AdressPage from "../AdressPage";
 import FeedPage from "../FeedPage";
-import SearchPage from "../SearchPage";
 import RestaurantsPage from "../RestaurantsPage";
 import ConfirmationPage from "../ConfirmationPage";
-import DoingOrderPage from "../DoingOrderPage";
 import ProfilePage from "../ProfilePage";
 import ShoppingTrolley from "../ShoppingTrolley";
 import LandingPage from "../LandingPage";
@@ -36,39 +34,30 @@ const Routes = () => {
           <LoginRoute exact path="/address">
             <AdressPage />
           </LoginRoute>
-          <Footer>
-            <PrivateRoute exact path="/feed">
-              <FeedPage />
-            </PrivateRoute>
-            <PrivateRoute exact path="/search">
-              <SearchPage />
-            </PrivateRoute>
-            <PrivateRoute exact path="/restaurants/:restaurantId">
-              <RestaurantsPage />
-            </PrivateRoute>
-            <PrivateRoute exact path="/confirmation">
-              <ConfirmationPage />
-            </PrivateRoute>
-            <PrivateRoute exact path="/doing">
-              <DoingOrderPage />
-            </PrivateRoute>
-            <PrivateRoute exact path="/carrinho">
-              <ShoppingTrolley />
-            </PrivateRoute>
-            <PrivateRoute exact path="/profile">
-              <ProfilePage />
-            </PrivateRoute>
-            <PrivateRoute exact path="/editprofile">
-              <EditProfilePage />
-            </PrivateRoute>
-            <PrivateRoute exact path="/editaddress">
-              <EditAddressPage />
-            </PrivateRoute>
-          </Footer>
+          <PrivateRoute exact path="/feed">
+            <FeedPage />
+          </PrivateRoute>
+          <PrivateRoute exact path="/restaurants/:restaurantId">
+            <RestaurantsPage />
+          </PrivateRoute>
+          <PrivateRoute exact path="/confirmation">
+            <ConfirmationPage />
+          </PrivateRoute>
+          <PrivateRoute exact path="/carrinho">
+            <ShoppingTrolley />
+          </PrivateRoute>
+          <PrivateRoute exact path="/profile">
+            <ProfilePage />
+          </PrivateRoute>
+          <PrivateRoute exact path="/editprofile">
+            <EditProfilePage />
+          </PrivateRoute>
+          <PrivateRoute exact path="/editaddress">
+            <EditAddressPage />
+          </PrivateRoute>
         </Switch>
       </BrowserRouter>
     </>
-
   );
 };
 

@@ -1,24 +1,22 @@
-import futureEats from '../../Services/futureEats'
+import futureEats from "../../Services/futureEats";
 
-export const updateProfile = async(name, email, cpf,) => {
-
+export const updateProfile = async (name, email, cpf) => {
   const axiosConfig = {
     headers: {
-      auth: localStorage.getItem("token"),
+      auth: String(localStorage.getItem("token")),
     },
   };
 
   const body = {
     name: name,
     email: email,
-    cpf: cpf
+    cpf: cpf,
+  };
+
+  try {
+    await futureEats.put("profile", body, axiosConfig);
+    alert("Alterado com sucesso");
+  } catch (e) {
+    alert("Algo aconteceu.");
   }
-  
-    try{
-      await futureEats.put('profile', body, axiosConfig)
-      alert('Alterado com sucesso')
-    } catch (e) {
-      alert('Algo aconteceu.')
-    }
-  
-}
+};
