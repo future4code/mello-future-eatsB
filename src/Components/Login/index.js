@@ -49,10 +49,13 @@ function Login() {
     };
     try {
       const response = await Axios.post(`${baseUrl}/login`, loginBody);
-
       window.localStorage.setItem("token", response.data.token);
       alert("Login efetuado com sucesso!");
-      history.push("/");
+      if (response.data.user.hasAddress === true) {
+        history.push("/feed");
+      } else if (response.data.user.hasAddress === false) {
+        history.push("/editaddress");
+      }
     } catch (error) {
       console.log(error);
       alert("Erro ao logar, tente novamente...");
