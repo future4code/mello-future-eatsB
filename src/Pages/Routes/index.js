@@ -1,9 +1,10 @@
 import React from "react";
-import { Switch, BrowserRouter } from "react-router-dom";
+import { Switch, BrowserRouter, Route } from "react-router-dom";
 import LoginPage from "../LoginPage";
 import SignUpPage from "../SignUpPage";
 import AdressPage from "../AdressPage";
 import FeedPage from "../FeedPage";
+
 import RestaurantsPage from "../RestaurantsPage";
 import ConfirmationPage from "../ConfirmationPage";
 import ProfilePage from "../ProfilePage";
@@ -21,9 +22,9 @@ const Routes = () => {
     <>
       <BrowserRouter>
         <Switch>
-          <LoginRoute exact path="/">
+          <Route exact path="/">
             <LandingPage />
-          </LoginRoute>
+          </Route>
           <LoginRoute exact path="/login">
             <LoginPage />
           </LoginRoute>
