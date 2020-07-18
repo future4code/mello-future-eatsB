@@ -2,23 +2,24 @@ import React, { useState, useEffect } from "react";
 import Axios from "axios";
 import { useHistory } from "react-router-dom";
 import LogoFutureEats from "../../Assets/img/LogoFutureEats.png";
-import PasswordImg from "../../Assets/img/PasswordImg.svg"
-import { 
+import PasswordImg from "../../Assets/img/PasswordImg.svg";
+import {
   Container,
   ImgLogo,
   Signin,
   InputLocus,
   LabelName,
-  LabelPassword, 
+  LabelPassword,
   InputRectangle1,
   InputRectangle2,
   PasswordPhoto,
   SaveButton,
   Signup,
-  StyledLink
-} from './styled'
+  StyledLink,
+} from "./styled";
 
-const baseUrl = "https://us-central1-missao-newton.cloudfunctions.net/futureEatsB";
+const baseUrl =
+  "https://us-central1-missao-newton.cloudfunctions.net/futureEatsB";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -28,8 +29,8 @@ function Login() {
   useEffect(() => {
     const token = window.localStorage.getItem("token");
 
-    if (token !== null) { 
-   /*    history.push("/");  */ 
+    if (token !== null) {
+      /*    history.push("/");  */
     }
   }, [history]);
 
@@ -38,7 +39,7 @@ function Login() {
   };
 
   const handleUpdatePassword = (event) => {
-    setPassword(event.target.value);  
+    setPassword(event.target.value);
   };
 
   const login = async () => {
@@ -56,44 +57,40 @@ function Login() {
       console.log(error);
       alert("Erro ao logar, tente novamente...");
     }
-    };
+  };
 
   return (
-    <Container>    
-      <ImgLogo src={LogoFutureEats} alt="Logo"/>
-      <Signin>Entrar</Signin>  
+    <Container>
+      <ImgLogo src={LogoFutureEats} alt="Logo" />
+      <Signin>Entrar</Signin>
       <InputLocus>
         <LabelName htmlFor="email">E-mail*</LabelName>
-          <InputRectangle1
-            name="email"
-            type="email"
-            variant='outlined'
-            color='secondary'
-            placeholder="email@email.com"
-            value={email}
-            onChange={handleUpdateEmail}
-          />
+        <InputRectangle1
+          name="email"
+          type="email"
+          variant="outlined"
+          color="secondary"
+          placeholder="email@email.com"
+          value={email}
+          onChange={handleUpdateEmail}
+        />
       </InputLocus>
 
       <InputLocus>
         <LabelPassword htmlFor="senha">Senha*</LabelPassword>
-          <InputRectangle2
-            name="senha"
-            placeholder="Mínimo 6 caracteres"
-            type="password"
-            variant='outlined'
-            color='secondary'
-            value={password}
-            onChange={handleUpdatePassword}
-          />
-          <PasswordPhoto src={PasswordImg} alt="PasswordLogo"/>
-       </InputLocus>
+        <InputRectangle2
+          name="senha"
+          placeholder="Mínimo 6 caracteres"
+          type="password"
+          variant="outlined"
+          color="secondary"
+          value={password}
+          onChange={handleUpdatePassword}
+        />
+        <PasswordPhoto src={PasswordImg} alt="PasswordLogo" />
+      </InputLocus>
 
-      <SaveButton
-        variant='contained'
-        color='secondary'
-        onClick={login}
-      >
+      <SaveButton variant="contained" color="secondary" onClick={login}>
         Entrar
       </SaveButton>
 
@@ -103,7 +100,7 @@ function Login() {
             Não possui cadastro? Clique aqui.
           </StyledLink>
         </Signup>
-      </nav>   
+      </nav>
     </Container>
   );
 }
