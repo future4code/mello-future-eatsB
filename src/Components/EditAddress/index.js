@@ -1,21 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   Container,
   InputLocus,
   InputRectangle,
   SaveButton,
-  ModalContainer,
 } from "../Common/Styled";
-import { useHistory } from "react-router-dom";
-import { CloseRounded } from '@material-ui/icons'
-import ModalBody from "../Modal/modal";
-import { updateAddress } from './services'
-import { useForm } from "../../Hooks/useForm";
+import { updateAddress } from './services';
+import useForm from "../../Hooks/useForm";
 
 const EditAddress = () => {
-
-  const [ isOpen, setIsOpen ] = useState(false)
-  const history = useHistory()
 
   const { form, onChange } = useForm({
     street: '',
@@ -31,10 +24,6 @@ const EditAddress = () => {
     onChange(name, value)
   }
 
-  const handleOpen = (bool) => {
-    setIsOpen(bool)
-  }
-
   const sendAddressUpdate = async() => {
     await updateAddress(
       form.street, 
@@ -44,16 +33,7 @@ const EditAddress = () => {
       form.state, 
       form.complement
     )
-
-    handleOpen(true)
   }
-  
-  const body = (
-    <ModalContainer>
-      <span onClick={() => history.push('/profile')}> <CloseRounded /> </span>
-      <div>Endereço atualizado com sucesso.</div>
-    </ModalContainer>
-  )
   
   return(
     <Container>
@@ -82,7 +62,6 @@ const EditAddress = () => {
           color='secondary'
           onChange={handleChange}
           placeholder='Ex. 0'
-          inputProps={{min: 0, inputMode: 'numeric'}}
           InputLabelProps={{shrink: true}}
         />
       </InputLocus>
@@ -148,14 +127,8 @@ const EditAddress = () => {
       >
         Salvar
       </SaveButton>
-
-      <ModalBody 
-        open={isOpen}
-        close={() => handleOpen(false)}
-        body={body}
-      />
     </Container>
   )
 }
 
-export default EditAddress
+export default EditAddress;
