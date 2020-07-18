@@ -1,12 +1,22 @@
 import React, { useState, useEffect } from "react";
 import Axios from "axios";
-import { useHistory, Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
+import LogoFutureEats from "../../Assets/img/LogoFutureEats.png";
+import PasswordImg from "../../Assets/img/PasswordImg.svg"
 import { 
-  Container, 
-  InputLocus, 
-  InputRectangle, 
-  SaveButton 
-} from '../Common/Styled'
+  Container,
+  ImgLogo,
+  Signin,
+  InputLocus,
+  LabelName,
+  LabelPassword, 
+  InputRectangle1,
+  InputRectangle2,
+  PasswordPhoto,
+  SaveButton,
+  Signup,
+  StyledLink
+} from './styled'
 
 const baseUrl = "https://us-central1-missao-newton.cloudfunctions.net/futureEatsB";
 
@@ -48,34 +58,36 @@ function Login() {
     }
     };
 
-
   return (
-    <Container>      
+    <Container>    
+      <ImgLogo src={LogoFutureEats} alt="Logo"/>
+      <Signin>Entrar</Signin>  
       <InputLocus>
-        <label htmlFor="email">E-mail*</label>
-          <InputRectangle
+        <LabelName htmlFor="email">E-mail*</LabelName>
+          <InputRectangle1
             name="email"
             type="email"
             variant='outlined'
             color='secondary'
-            placeholder="E-mail"
+            placeholder="email@email.com"
             value={email}
             onChange={handleUpdateEmail}
           />
       </InputLocus>
 
       <InputLocus>
-        <label htmlFor="senha">Senha*</label>
-          <InputRectangle
+        <LabelPassword htmlFor="senha">Senha*</LabelPassword>
+          <InputRectangle2
             name="senha"
-            placeholder="Senha"
+            placeholder="Mínimo 6 caracteres"
             type="password"
             variant='outlined'
             color='secondary'
             value={password}
             onChange={handleUpdatePassword}
           />
-      </InputLocus>
+          <PasswordPhoto src={PasswordImg} alt="PasswordLogo"/>
+       </InputLocus>
 
       <SaveButton
         variant='contained'
@@ -86,7 +98,11 @@ function Login() {
       </SaveButton>
 
       <nav>
-        <p>Não possui cadastro? Clique<Link to={"/signup"}> aqui </Link></p>
+        <Signup>
+          <StyledLink to={"/signup"}>
+            Não possui cadastro? Clique aqui.
+          </StyledLink>
+        </Signup>
       </nav>   
     </Container>
   );
