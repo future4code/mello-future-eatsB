@@ -1,6 +1,6 @@
 import React from "react";
-import { Container } from "./styled";
 import EditAddress from "../../Components/EditAddress";
+import { Container } from "./Styled";
 
 const EditAddressPage = () => {
   return (

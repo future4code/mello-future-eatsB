@@ -13,7 +13,6 @@ export const ImgLogo = styled.img`
   width: 104px;
   height: 58px;
   object-fit: contain;
-
   position: absolute;
   top: 88px;
 `;
@@ -30,7 +29,6 @@ export const Signin = styled.p`
   letter-spacing: -0.39px;
   text-align: center;
   color: #000000;
-
   position: absolute;
   top: 174px;
 `;
@@ -42,8 +40,7 @@ export const InputLocus = styled.div`
   width: 360px;
   height: 72px;
   padding: 8px 16px;
-
-  :last-of-type{
+  :last-of-type {
     margin-bottom: 8px;
   }
 `;
@@ -61,7 +58,6 @@ export const LabelName = styled.label`
   letter-spacing: -0.29px;
   color: #b8b8b8;
   z-index: 2;
-
   position: absolute;
   top: 207px;
   left: 32px;
@@ -80,7 +76,6 @@ export const LabelEmail = styled.label`
   letter-spacing: -0.29px;
   color: #b8b8b8;
   z-index: 2;
-
   position: absolute;
   top: 279px;
   left: 32px;
@@ -99,9 +94,8 @@ export const LabelCpf = styled.label`
   letter-spacing: -0.29px;
   color: #b8b8b8;
   z-index: 2;
-
   position: absolute;
-  top: 348px;
+  top: 279px;
   left: 32px;
 `;
 
@@ -118,9 +112,8 @@ export const LabelPassword = styled.label`
   letter-spacing: -0.29px;
   color: #b8b8b8;
   z-index: 2;
-
   position: absolute;
-  top: 423px;
+  top: 279px;
   left: 32px;
 `;
 
@@ -137,9 +130,8 @@ export const LabelPasswordAgain = styled.label`
   letter-spacing: -0.29px;
   color: #b8b8b8;
   z-index: 2;
-
   position: absolute;
-  top: 495px;
+  top: 279px;
   left: 32px;
 `;
 
@@ -157,7 +149,6 @@ export const InputRectangle1 = styled.input`
   letter-spacing: -0.39px;
   color: #b8b8b8;
   padding-left: 16px;
-
   position: absolute;
   top: 212px;
 `;
@@ -176,7 +167,6 @@ export const InputRectangle2 = styled.input`
   letter-spacing: -0.39px;
   color: #b8b8b8;
   padding-left: 16px;
-
   position: absolute;
   top: 284px;
 `;
@@ -195,9 +185,8 @@ export const InputRectangle3 = styled.input`
   letter-spacing: -0.39px;
   color: #b8b8b8;
   padding-left: 16px;
-
   position: absolute;
-  top: 356px;
+  top: 284px;
 `;
 
 export const InputRectangle4 = styled.input`
@@ -214,9 +203,8 @@ export const InputRectangle4 = styled.input`
   letter-spacing: -0.39px;
   color: #b8b8b8;
   padding-left: 16px;
-
   position: absolute;
-  top: 428px;
+  top: 284px;
 `;
 
 export const InputRectangle5 = styled.input`
@@ -233,29 +221,17 @@ export const InputRectangle5 = styled.input`
   letter-spacing: -0.39px;
   color: #b8b8b8;
   padding-left: 16px;
-
   position: absolute;
-  top: 500px;
+  top: 284px;
 `;
 
-export const PasswordPhoto1 = styled.img`
+export const PasswordPhoto = styled.img`
   width: 24px;
   height: 24px;
   object-fit: contain;
-
   position: absolute;
-    top: 444px;
-    right: 32px;
-`;
-
-export const PasswordPhoto2 = styled.img`
-  width: 24px;
-  height: 24px;
-  object-fit: contain;
-
-  position: absolute;
-    top: 516px;
-    right: 32px;
+  top: 300px;
+  right: 32px;
 `;
 
 export const SaveButton = styled.button`
@@ -274,9 +250,25 @@ export const SaveButton = styled.button`
   letter-spacing: -0.39px;
   text-align: center;
   color: #000000;
-
   position: absolute;
-  top: 572px;
+  top: 356px;
+`;
+
+export const Signup = styled.p`
+  width: 296px;
+  height: 18px;
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: -0.39px;
+  text-align: center;
+  color: #000000;
+  position: absolute;
+  top: 426px;
+  right: 32px;
 `;
 
 export const StyledLink = styled(Link)`

@@ -13,7 +13,6 @@ export const ImgLogo = styled.img`
   width: 104px;
   height: 58px;
   object-fit: contain;
-
   position: absolute;
   top: 88px;
 `;
@@ -30,7 +29,6 @@ export const Signin = styled.p`
   letter-spacing: -0.39px;
   text-align: center;
   color: #000000;
-
   position: absolute;
   top: 174px;
 `;
@@ -42,8 +40,7 @@ export const InputLocus = styled.div`
   width: 360px;
   height: 72px;
   padding: 8px 16px;
-
-  :last-of-type{
+  :last-of-type {
     margin-bottom: 8px;
   }
 `;
@@ -61,7 +58,6 @@ export const LabelName = styled.label`
   letter-spacing: -0.29px;
   color: #b8b8b8;
   z-index: 2;
-
   position: absolute;
   top: 207px;
   left: 32px;
@@ -80,7 +76,6 @@ export const LabelPassword = styled.label`
   letter-spacing: -0.29px;
   color: #b8b8b8;
   z-index: 2;
-
   position: absolute;
   top: 279px;
   left: 32px;
@@ -100,7 +95,6 @@ export const InputRectangle1 = styled.input`
   letter-spacing: -0.39px;
   color: #b8b8b8;
   padding-left: 16px;
-
   position: absolute;
   top: 212px;
 `;
@@ -119,7 +113,6 @@ export const InputRectangle2 = styled.input`
   letter-spacing: -0.39px;
   color: #b8b8b8;
   padding-left: 16px;
-
   position: absolute;
   top: 284px;
 `;
@@ -128,10 +121,9 @@ export const PasswordPhoto = styled.img`
   width: 24px;
   height: 24px;
   object-fit: contain;
-
   position: absolute;
-    top: 300px;
-    right: 32px;
+  top: 300px;
+  right: 32px;
 `;
 
 export const SaveButton = styled.button`
@@ -150,7 +142,6 @@ export const SaveButton = styled.button`
   letter-spacing: -0.39px;
   text-align: center;
   color: #000000;
-
   position: absolute;
   top: 356px;
 `;
@@ -167,7 +158,6 @@ export const Signup = styled.p`
   letter-spacing: -0.39px;
   text-align: center;
   color: #000000;
-
   position: absolute;
   top: 426px;
   right: 32px;

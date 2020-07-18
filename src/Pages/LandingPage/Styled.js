@@ -17,7 +17,6 @@ export const Container = styled.div`
   background-color: black;
   justify-content: center;
   align-items: center;
-
   img {
     animation: ${OpenUp} 3s;
     width: 126px;
