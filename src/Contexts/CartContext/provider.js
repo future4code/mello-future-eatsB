@@ -5,7 +5,6 @@ import futureEats from "../../Services/futureEats";
 const productsInCart = JSON.parse(localStorage.getItem("cart")) || [];
 
 const reducer = (state, action) => {
-  console.log(state);
   switch (action.type) {
     case "ADD_TO_CART":
       const searchIndex = state.findIndex(
@@ -48,8 +47,7 @@ const reducer = (state, action) => {
     case "CLEAR":
       localStorage.remove("cart");
       localStorage.remove("restaurant");
-
-      return state;
+      return [];
 
     default:
       return state;
@@ -58,7 +56,7 @@ const reducer = (state, action) => {
 
 export default function CartProvider({ children }) {
   const [state, dispatch] = useReducer(reducer, productsInCart);
-  const [restaurantID, setRestaurantID] = useState();
+
   const [restaurantData, setRestaurantData] = useState(
     JSON.parse(localStorage.getItem("restaurant")) || {}
   );
@@ -78,7 +76,6 @@ export default function CartProvider({ children }) {
   }, [state, totalPrice]);
 
   const getRestaurantDetail = async (restaurantId) => {
-    setRestaurantID(restaurantId);
     const axiosConfig = {
       headers: {
         auth:
@@ -107,7 +104,6 @@ export default function CartProvider({ children }) {
         totalPrice,
         restaurantData,
         getRestaurantDetail,
-        restaurantID,
       }}
     >
       {children}

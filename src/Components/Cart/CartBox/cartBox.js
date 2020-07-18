@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import CartContext from "../../../Contexts/CartContext/context";
 import { SaveButton } from "../../Common/Styled";
 
@@ -19,6 +19,7 @@ import {
 
 import CartItem from "../CartItem/cartItem";
 import { placeOrder } from "./services";
+import futureEats from "../../../Services/futureEats";
 
 export default function CartBox() {
   const {
@@ -29,18 +30,39 @@ export default function CartBox() {
     restaurantId,
   } = useContext(CartContext);
   const [paymentMethod, setMethod] = useState();
+  const [profile, setProfile] = useState({});
+
+  useEffect(() => {
+    getProfile();
+  }, []);
+
+  const getProfile = async () => {
+    try {
+      const response = await futureEats.get("/profile", {
+        headers: {
+          /* localStorage.getItem("token") */
+          auth:
+            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImpXdFp0TjN5QUwzRG40OE96ZkU1IiwibmFtZSI6Ik1hcmlhIiwiZW1haWwiOiJtYXJpYUBnbWFpbC5jb20iLCJjcGYiOiIxMTEuMjIyLjMzMy00NCIsImhhc0FkZHJlc3MiOnRydWUsImFkZHJlc3MiOiJBdi4gQW5nw6lsaWNhLCAxODE0LCAzMDUgLSBIaWdpZW7Ds3BvbGlzIiwiaWF0IjoxNTk0NzcyNzExfQ.9812N7XBG1cLsRAzM-RmIIyKrrBI7LYpfJp2Q1TSVAY",
+        },
+      });
+
+      setProfile(response.data.user);
+    } catch (error) {}
+  };
 
   const sendOrder = async (e) => {
     e.preventDefault();
-    await placeOrder(state, paymentMethod, restaurantId);
+    await placeOrder(state, paymentMethod, restaurantData.id);
   };
 
   return (
     <>
       <TextBar>Meu carrinho</TextBar>
       <Address>
-        <AddressShipping>Endereço de entrega</AddressShipping>
-        <Street>Rua Antonio Vilela, 22</Street>
+
+        <p>Endereço de entrega</p>
+        <b>{profile.address}</b>
+
       </Address>
       <OrderBox>
         {state.length === 0 ? (
@@ -61,7 +83,7 @@ export default function CartBox() {
         )}
       </OrderBox>
       <DeliveryTax>
-        <p>Frete: R$ {restaurantData.shipping}</p>
+        {state.length > 0 && <p>Frete: R$ {restaurantData.shipping}</p>}
       </DeliveryTax>
       <PriceBox>
         <p>SUBTOTAL</p>
@@ -78,7 +100,7 @@ export default function CartBox() {
               }}
               type="radio"
               name="method"
-              value="Dinheiro"
+              value="cash"
             />
             <label htmlFor=""> Dinheiro</label>
           </div>
@@ -89,7 +111,7 @@ export default function CartBox() {
               }}
               type="radio"
               name="method"
-              value="Cartão de crédito"
+              value="creditcard"
             />
             <label htmlFor=""> Cartão de crédito</label>
           </div>
