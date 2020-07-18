@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 import CartContext from "../../../Contexts/CartContext/context";
-import { SaveButton } from "../../Common/styled";
+import { SaveButton } from "../../Common/Styled";
 
 import {
   TextBar,
@@ -22,13 +22,9 @@ import { placeOrder } from "./services";
 import futureEats from "../../../Services/futureEats";
 
 export default function CartBox() {
-  const {
-    state,
-    totalPrice,
-    dispatch,
-    restaurantData,
-    restaurantId,
-  } = useContext(CartContext);
+  const { state, totalPrice, dispatch, restaurantData } = useContext(
+    CartContext
+  );
   const [paymentMethod, setMethod] = useState();
   const [profile, setProfile] = useState({});
 

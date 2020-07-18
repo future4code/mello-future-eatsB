@@ -5,9 +5,9 @@ import { Container } from './styled';
 const LandingPage = () => {
   return (
     <Container>
-      <img src={Logo} alt='FutureEats Logo' />
+      <img src={Logo} alt="FutureEats Logo" />
     </Container>
-  )
-}
+  );
+};
 
-export default LandingPage
+export default LandingPage;
