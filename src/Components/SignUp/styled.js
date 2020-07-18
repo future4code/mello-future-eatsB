@@ -9,6 +9,29 @@ export const Container = styled.div`
   height: 640px;
 `;
 
+export const Bar = styled.div`
+    top: 0;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 64px;
+    border-bottom: 0.5px solid rgba(0, 0, 0, 0.25);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0.5px 0 0 var(--black-25);
+    background-color: #ffffff;
+`;
+
+export const BackImg = styled.img`
+    position: absolute;
+    width: 23px;
+    height: 24px;
+    top: 30px;
+    left: 16px;
+    object-fit: contain;
+`;
+
 export const ImgLogo = styled.img`
   width: 104px;
   height: 58px;
@@ -186,7 +209,7 @@ export const InputRectangle3 = styled.input`
   color: #b8b8b8;
   padding-left: 16px;
   position: absolute;
-  top: 284px;
+  top: 356px;
 `;
 
 export const InputRectangle4 = styled.input`
@@ -204,7 +227,7 @@ export const InputRectangle4 = styled.input`
   color: #b8b8b8;
   padding-left: 16px;
   position: absolute;
-  top: 284px;
+  top: 428px;
 `;
 
 export const InputRectangle5 = styled.input`
@@ -222,15 +245,24 @@ export const InputRectangle5 = styled.input`
   color: #b8b8b8;
   padding-left: 16px;
   position: absolute;
-  top: 284px;
+  top: 500px;
 `;
 
-export const PasswordPhoto = styled.img`
+export const PasswordPhoto1 = styled.img`
   width: 24px;
   height: 24px;
   object-fit: contain;
   position: absolute;
-  top: 300px;
+  top: 444px;
+  right: 32px;
+`;
+
+export const PasswordPhoto2 = styled.img`
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  position: absolute;
+  top: 516px;
   right: 32px;
 `;
 
@@ -251,7 +283,7 @@ export const SaveButton = styled.button`
   text-align: center;
   color: #000000;
   position: absolute;
-  top: 356px;
+  top: 572px;
 `;
 
 export const Signup = styled.p`

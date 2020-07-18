@@ -1,9 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 import useForm from "../../Hooks/useForm";
+import LogoFutureEats from "../../Assets/img/LogoFutureEats.png";
+import PasswordImg from "../../Assets/img/PasswordImg.svg"
+import Back from "../../Assets/img/Back.svg";
 import {
   Container,
+  Bar,
+  BackImg,
+  ImgLogo,
+  Signin,
   InputRectangle1,
   InputRectangle2,
   InputRectangle3,
@@ -16,6 +23,8 @@ import {
   LabelPassword,
   LabelPasswordAgain,
   SaveButton,
+  PasswordPhoto1,
+  PasswordPhoto2
 } from "./styled";
 
 const baseUrl =
@@ -23,6 +32,14 @@ const baseUrl =
 
 function SignUp() {
   const history = useHistory();
+
+  useEffect(() => {
+    const token = window.localStorage.getItem("token");
+
+    if (token !== null) { 
+   /*    history.push("/");  */ 
+    }
+  }, [history]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -50,6 +67,7 @@ function SignUp() {
         .post(`${baseUrl}`, body)
         .then((response) => {
           console.log(response);
+          window.localStorage.setItem("token", response.data.token);
           alert("Conta criada com sucesso!");
           goToLogin();
         })
@@ -64,11 +82,20 @@ function SignUp() {
   const goToLogin = () => {
     resetForm();
     buttonSignUp();
-    history.push("/login");
+    history.push("/editaddress");
   };
 
+  const backToLogin = () => {
+    history.push("/login");
+  };
+  
   return (
     <Container>
+      <Bar>
+        <BackImg onClick={backToLogin} src={Back} alt="Drop Right" />
+      </Bar>
+      <ImgLogo src={LogoFutureEats} alt="Logo"/>
+      <Signin>Cadastrar</Signin>  
       <InputLocus>
         <LabelName htmlFor="name">Nome*</LabelName>
         <InputRectangle1
@@ -115,6 +142,7 @@ function SignUp() {
         <LabelPassword htmlFor="password">Senha*</LabelPassword>
         <InputRectangle4
           required
+          type="password"
           variant="outlined"
           color="secondary"
           placeholder="Mínimo 6 caracteres"
@@ -123,14 +151,16 @@ function SignUp() {
           value={form.password}
           onChange={handleChange}
         />
+        <PasswordPhoto1 src={PasswordImg} alt="PasswordLogo"/>
       </InputLocus>
 
       <InputLocus>
         <LabelPasswordAgain htmlFor="confirmPassword">
-          Senha*
+          Confirmar*
         </LabelPasswordAgain>
         <InputRectangle5
           required
+          type="password"
           variant="outlined"
           color="secondary"
           placeholder="Confirme a senha anterior"
@@ -139,6 +169,7 @@ function SignUp() {
           value={form.confirmPassword}
           onChange={handleChange}
         />
+        <PasswordPhoto2 src={PasswordImg} alt="PasswordLogo"/>
       </InputLocus>
 
       <SaveButton variant="contained" color="secondary" onClick={buttonSignUp}>

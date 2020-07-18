@@ -1,6 +1,6 @@
-import React from 'react'
-import Logo from '../../Assets/img/Logo.png'
-import { Container } from './styled'
+import React from 'react';
+import Logo from '../../Assets/img/Logo.png';
+import { Container } from './styled';
 
 const LandingPage = () => {
   return (
