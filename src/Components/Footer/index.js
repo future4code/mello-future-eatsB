@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, SingleIcon } from "./Styled";
+import { Container, SingleIcon } from "./styled";
 import cartIcon from "../../Assets/img/Cart.svg";
 import profileIcon from "../../Assets/img/Profile.svg";
 import homeIcon from "../../Assets/img/Home.svg";
