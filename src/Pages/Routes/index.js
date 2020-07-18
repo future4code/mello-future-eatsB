@@ -12,7 +12,7 @@ import LandingPage from "../LandingPage";
 import EditAddressPage from "../EditAddressPage";
 import EditProfilePage from "../EditProfilePage";
 import Footer from "../../Components/Footer/index";
-import Header from "../../Components/Header/index";
+
 import PrivateRoute from "../PrivateRoute/privateUserRoute";
 import LoginRoute from "../PrivateRoute/loginRoute";
 

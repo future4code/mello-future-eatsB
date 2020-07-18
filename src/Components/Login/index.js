@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Axios from "axios";
 import { useHistory } from "react-router-dom";
 import LogoFutureEats from "../../Assets/img/LogoFutureEats.png";
-import PasswordImg from "../../Assets/img/PasswordImg.svg";
+
 import {
   Container,
   ImgLogo,
@@ -12,11 +12,13 @@ import {
   LabelPassword,
   InputRectangle1,
   InputRectangle2,
-  PasswordPhoto,
   SaveButton,
   Signup,
   StyledLink,
 } from "./styled";
+import { InputAdornment, IconButton } from "@material-ui/core";
+import Visibility from "@material-ui/icons/Visibility";
+import VisibilityOff from "@material-ui/icons/VisibilityOff";
 
 const baseUrl =
   "https://us-central1-missao-newton.cloudfunctions.net/futureEatsB";
@@ -25,14 +27,10 @@ function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const history = useHistory();
+  const [showPassword, setShowPassword] = useState(false);
 
-  useEffect(() => {
-    const token = window.localStorage.getItem("token");
-
-    if (token !== null) {
-      /*    history.push("/");  */
-    }
-  }, [history]);
+  const handleClickShowPassword = () => setShowPassword(!showPassword);
+  const handleMouseDownPassword = () => setShowPassword(!showPassword);
 
   const handleUpdateEmail = (event) => {
     setEmail(event.target.value);
@@ -83,13 +81,25 @@ function Login() {
         <InputRectangle2
           name="senha"
           placeholder="Mínimo 6 caracteres"
-          type="password"
+          type={showPassword ? "text" : "password"}
           variant="outlined"
           color="secondary"
           value={password}
           onChange={handleUpdatePassword}
+          InputProps={{
+            endAdornment: (
+              <InputAdornment position="end">
+                <IconButton
+                  aria-label="toggle password visibility"
+                  onClick={handleClickShowPassword}
+                  onMouseDown={handleMouseDownPassword}
+                >
+                  {showPassword ? <Visibility /> : <VisibilityOff />}
+                </IconButton>
+              </InputAdornment>
+            ),
+          }}
         />
-        <PasswordPhoto src={PasswordImg} alt="PasswordLogo" />
       </InputLocus>
 
       <SaveButton variant="contained" color="secondary" onClick={login}>
