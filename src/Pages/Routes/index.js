@@ -19,6 +19,7 @@ import LoginRoute from "../PrivateRoute/loginRoute";
 const Routes = () => {
   return (
     <>
+      <Header />
       <BrowserRouter>
         <Switch>
           <LoginRoute exact path="/">
@@ -30,7 +31,6 @@ const Routes = () => {
           <LoginRoute exact path="/signup">
             <SignUpPage />
           </LoginRoute>
-           <Header />
           <LoginRoute exact path="/address">
             <AdressPage />
           </LoginRoute>
@@ -56,6 +56,7 @@ const Routes = () => {
             <EditAddressPage />
           </PrivateRoute>
         </Switch>
+        <Footer />
       </BrowserRouter>
     </>
   );

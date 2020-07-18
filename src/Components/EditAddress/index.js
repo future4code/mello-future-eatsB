@@ -4,7 +4,7 @@ import {
   InputLocus,
   InputRectangle,
   SaveButton,
-} from "../Common/styled";
+} from "../Common/Styled";
 import { updateAddress } from './services';
 import useForm from "../../Hooks/useForm";
 
