@@ -4,10 +4,8 @@ import LoginPage from "../LoginPage";
 import SignUpPage from "../SignUpPage";
 import AdressPage from "../AdressPage";
 import FeedPage from "../FeedPage";
-import SearchPage from "../SearchPage";
 import RestaurantsPage from "../RestaurantsPage";
 import ConfirmationPage from "../ConfirmationPage";
-import DoingOrderPage from "../DoingOrderPage";
 import ProfilePage from "../ProfilePage";
 import ShoppingTrolley from "../ShoppingTrolley";
 import LandingPage from "../LandingPage";
@@ -15,7 +13,6 @@ import EditAddressPage from "../EditAddressPage";
 import EditProfilePage from "../EditProfilePage";
 import Footer from "../../Components/Footer/index";
 import Header from "../../Components/Header/index";
-import EditAddressPage from "../EditAddressPage/index";
 import PrivateRoute from "../PrivateRoute/privateUserRoute";
 import LoginRoute from "../PrivateRoute/loginRoute";
 
@@ -40,17 +37,11 @@ const Routes = () => {
           <PrivateRoute exact path="/feed">
             <FeedPage />
           </PrivateRoute>
-          <PrivateRoute exact path="/search">
-            <SearchPage />
-          </PrivateRoute>
           <PrivateRoute exact path="/restaurants/:restaurantId">
             <RestaurantsPage />
           </PrivateRoute>
           <PrivateRoute exact path="/confirmation">
             <ConfirmationPage />
-          </PrivateRoute>
-          <PrivateRoute exact path="/doing">
-            <DoingOrderPage />
           </PrivateRoute>
           <PrivateRoute exact path="/carrinho">
             <ShoppingTrolley />
@@ -68,7 +59,6 @@ const Routes = () => {
         <Footer />
       </BrowserRouter>
     </>
-
   );
 };
 
