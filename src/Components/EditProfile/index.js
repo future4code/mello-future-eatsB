@@ -4,7 +4,7 @@ import {
   InputLocus,
   InputRectangle,
   SaveButton
-} from "../Common/Styled";
+} from "../Common/styled";
 import Cleave from 'cleave.js/react'
 import PropTypes from 'prop-types'
 import ProfileContext from "../../Contexts/ProfileContext/context";
