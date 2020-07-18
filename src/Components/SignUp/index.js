@@ -4,10 +4,19 @@ import { useHistory } from "react-router-dom";
 import useForm from "../../Hooks/useForm"
 import { 
   Container,
-  InputRectangle, 
+  InputRectangle1, 
+  InputRectangle2,
+  InputRectangle3,
+  InputRectangle4,
+  InputRectangle5,    
   InputLocus,
+  LabelName,
+  LabelEmail,
+  LabelCpf,
+  LabelPassword,
+  LabelPasswordAgain,
   SaveButton
-} from "../Common/Styled";
+} from "./styled";
 
 const baseUrl = "https://us-central1-missao-newton.cloudfunctions.net/futureEatsB/signup";
 
@@ -61,8 +70,8 @@ function SignUp() {
   return (
       <Container>
         <InputLocus>
-          <label htmlFor="name">Nome*</label>
-          <InputRectangle
+          <LabelName htmlFor="name">Nome*</LabelName>
+          <InputRectangle1
             required
             variant='outlined'
             color='secondary'
@@ -75,8 +84,8 @@ function SignUp() {
         </InputLocus> 
 
         <InputLocus>
-          <label htmlFor="email">E-mail*</label>
-          <InputRectangle
+          <LabelEmail htmlFor="email">E-mail*</LabelEmail>
+          <InputRectangle2
             required
             variant='outlined'
             color='secondary'
@@ -89,8 +98,8 @@ function SignUp() {
         </InputLocus>
 
         <InputLocus>
-          <label htmlFor="cpf">CPF*</label>
-          <InputRectangle
+          <LabelCpf htmlFor="cpf">CPF*</LabelCpf>
+          <InputRectangle3
             required
             variant='outlined'
             color='secondary'
@@ -103,8 +112,8 @@ function SignUp() {
         </InputLocus>
 
         <InputLocus>  
-          <label htmlFor="password">Senha*</label>
-          <InputRectangle
+          <LabelPassword htmlFor="password">Senha*</LabelPassword>
+          <InputRectangle4
             required
             variant='outlined'
             color='secondary'
@@ -117,8 +126,8 @@ function SignUp() {
         </InputLocus>
 
         <InputLocus>
-          <label htmlFor="confirmPassword">Senha*</label>
-          <InputRectangle
+          <LabelPasswordAgain htmlFor="confirmPassword">Senha*</LabelPasswordAgain>
+          <InputRectangle5
             required
             variant='outlined'
             color='secondary'
