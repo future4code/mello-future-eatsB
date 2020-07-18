@@ -66,12 +66,14 @@ function Login() {
         <LabelName htmlFor="email">E-mail*</LabelName>
           <InputRectangle1
             name="email"
+            required
             type="email"
             variant='outlined'
             color='secondary'
             placeholder="email@email.com"
             value={email}
             onChange={handleUpdateEmail}
+            InputLabelProps={{shrink: true}}
           />
       </InputLocus>
 
@@ -79,12 +81,14 @@ function Login() {
         <LabelPassword htmlFor="senha">Senha*</LabelPassword>
           <InputRectangle2
             name="senha"
+            required
             placeholder="Mínimo 6 caracteres"
             type="password"
             variant='outlined'
             color='secondary'
             value={password}
             onChange={handleUpdatePassword}
+            InputLabelProps={{shrink: true}}
           />
           <PasswordPhoto src={PasswordImg} alt="PasswordLogo"/>
        </InputLocus>
