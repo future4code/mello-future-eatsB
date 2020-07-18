@@ -1,9 +1,13 @@
 import React from "react";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
-import useForm from "../../Hooks/useForm"
+import useForm from "../../Hooks/useForm";
+import LogoFutureEats from "../../Assets/img/LogoFutureEats.png";
+import PasswordImg from "../../Assets/img/PasswordImg.svg";
 import { 
   Container,
+  ImgLogo,
+  Signin,
   InputRectangle1, 
   InputRectangle2,
   InputRectangle3,
@@ -15,7 +19,9 @@ import {
   LabelCpf,
   LabelPassword,
   LabelPasswordAgain,
-  SaveButton
+  SaveButton,
+  PasswordPhoto1,
+  PasswordPhoto2
 } from "./styled";
 
 const baseUrl = "https://us-central1-missao-newton.cloudfunctions.net/futureEatsB/signup";
@@ -64,11 +70,13 @@ function SignUp() {
   const goToLogin = () => {
     resetForm();
     buttonSignUp();
-    history.push("/login");
+    history.push("/editaddress");
   };
 
   return (
       <Container>
+        <ImgLogo src={LogoFutureEats} alt="Logo"/>
+        <Signin>Cadastrar</Signin>
         <InputLocus>
           <LabelName htmlFor="name">Nome*</LabelName>
           <InputRectangle1
@@ -123,6 +131,7 @@ function SignUp() {
             value={form.password}
             onChange={handleChange}
           />
+          <PasswordPhoto1 src={PasswordImg} alt="PasswordLogo"/>
         </InputLocus>
 
         <InputLocus>
@@ -137,6 +146,7 @@ function SignUp() {
             value={form.confirmPassword}
             onChange={handleChange}
           />
+          <PasswordPhoto2 src={PasswordImg} alt="PasswordLogo"/>
         </InputLocus>
 
         <SaveButton
