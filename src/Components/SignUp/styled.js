@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { TextField } from '@material-ui/core'
 
 export const Container = styled.div`
   display: flex;
@@ -82,6 +83,7 @@ export const LabelName = styled.label`
   color: #b8b8b8;
   z-index: 2;
   position: absolute;
+  padding-left: 5px;
   top: 207px;
   left: 32px;
 `;
@@ -100,6 +102,7 @@ export const LabelEmail = styled.label`
   color: #b8b8b8;
   z-index: 2;
   position: absolute;
+  padding-left: 5px;
   top: 279px;
   left: 32px;
 `;
@@ -118,7 +121,8 @@ export const LabelCpf = styled.label`
   color: #b8b8b8;
   z-index: 2;
   position: absolute;
-  top: 279px;
+  padding-left: 5px;
+  top: 351px;
   left: 32px;
 `;
 
@@ -136,7 +140,8 @@ export const LabelPassword = styled.label`
   color: #b8b8b8;
   z-index: 2;
   position: absolute;
-  top: 279px;
+  padding-left: 5px;
+  top: 423px;
   left: 32px;
 `;
 
@@ -154,11 +159,12 @@ export const LabelPasswordAgain = styled.label`
   color: #b8b8b8;
   z-index: 2;
   position: absolute;
-  top: 279px;
+  padding-left: 5px;
+  top: 495px;
   left: 32px;
 `;
 
-export const InputRectangle1 = styled.input`
+export const InputRectangle1 = styled(TextField)`
   width: 328px;
   height: 56px;
   border-radius: 2px;
@@ -173,10 +179,10 @@ export const InputRectangle1 = styled.input`
   color: #b8b8b8;
   padding-left: 16px;
   position: absolute;
-  top: 212px;
+  top: 206px;
 `;
 
-export const InputRectangle2 = styled.input`
+export const InputRectangle2 = styled(TextField)`
   width: 328px;
   height: 56px;
   border-radius: 2px;
@@ -191,10 +197,10 @@ export const InputRectangle2 = styled.input`
   color: #b8b8b8;
   padding-left: 16px;
   position: absolute;
-  top: 284px;
+  top: 206px;
 `;
 
-export const InputRectangle3 = styled.input`
+export const InputRectangle3 = styled(TextField)`
   width: 328px;
   height: 56px;
   border-radius: 2px;
@@ -209,10 +215,10 @@ export const InputRectangle3 = styled.input`
   color: #b8b8b8;
   padding-left: 16px;
   position: absolute;
-  top: 356px;
+  top: 206px;
 `;
 
-export const InputRectangle4 = styled.input`
+export const InputRectangle4 = styled(TextField)`
   width: 328px;
   height: 56px;
   border-radius: 2px;
@@ -227,10 +233,10 @@ export const InputRectangle4 = styled.input`
   color: #b8b8b8;
   padding-left: 16px;
   position: absolute;
-  top: 428px;
+  top: 206px;
 `;
 
-export const InputRectangle5 = styled.input`
+export const InputRectangle5 = styled(TextField)`
   width: 328px;
   height: 56px;
   border-radius: 2px;
@@ -245,7 +251,7 @@ export const InputRectangle5 = styled.input`
   color: #b8b8b8;
   padding-left: 16px;
   position: absolute;
-  top: 500px;
+  top: 205px;
 `;
 
 export const PasswordPhoto1 = styled.img`
@@ -260,7 +266,6 @@ export const PasswordPhoto1 = styled.img`
 export const PasswordPhoto2 = styled.img`
   width: 24px;
   height: 24px;
-  object-fit: contain;
   position: absolute;
   top: 516px;
   right: 32px;

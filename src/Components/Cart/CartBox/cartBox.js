@@ -5,8 +5,6 @@ import { SaveButton } from "../../Common/styled";
 import {
   TextBar,
   Address,
-  AddressShipping,
-  Street,
   OrderBox,
   Place,
   RestaurantName,

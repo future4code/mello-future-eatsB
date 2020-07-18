@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { TextField } from '@material-ui/core'
 
 export const Container = styled.div`
   display: flex;
@@ -59,8 +60,9 @@ export const LabelName = styled.label`
   color: #b8b8b8;
   z-index: 2;
   position: absolute;
-  top: 207px;
+  top: 215px;
   left: 32px;
+  padding-left: 5px;
 `;
 
 export const LabelPassword = styled.label`
@@ -77,11 +79,12 @@ export const LabelPassword = styled.label`
   color: #b8b8b8;
   z-index: 2;
   position: absolute;
-  top: 279px;
+  top: 285px;
   left: 32px;
+  padding-left: 5px;
 `;
 
-export const InputRectangle1 = styled.input`
+export const InputRectangle1 = styled(TextField)`
   width: 328px;
   height: 56px;
   border-radius: 2px;
@@ -99,7 +102,7 @@ export const InputRectangle1 = styled.input`
   top: 212px;
 `;
 
-export const InputRectangle2 = styled.input`
+export const InputRectangle2 = styled(TextField)`
   width: 328px;
   height: 56px;
   border-radius: 2px;
@@ -114,7 +117,7 @@ export const InputRectangle2 = styled.input`
   color: #b8b8b8;
   padding-left: 16px;
   position: absolute;
-  top: 284px;
+  top: 212px;
 `;
 
 export const PasswordPhoto = styled.img`

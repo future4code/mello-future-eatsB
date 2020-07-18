@@ -8,7 +8,7 @@ export const MainContainer = styled.div`
   margin-bottom: 8px;
   
   position: relative;
-  top: 40px;
+  top: 186px;
   right: 8px;
 `;
 

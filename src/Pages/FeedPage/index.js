@@ -5,10 +5,12 @@ import MenuBar from "../../Components/MenuBar/MenuBar.js";
 import Search from "../../Assets/img/Search.svg";
 import {
   Container,
+  Bar,
   TextBar,
   SearchStyled,
   ImgSearch,
   ButtonSearch,
+  DivMenuBar
 } from "./styled";
 
 const FeedPage = () => {
@@ -39,15 +41,17 @@ const FeedPage = () => {
 
   return (
     <Container>
-      <TextBar>FutureEats</TextBar>
+      <Bar>
+        <TextBar>FutureEats</TextBar>
+      </Bar>
       <form onSubmit={handleSearch}>
         <SearchStyled ref={inputsearch} placeholder="Restaurante" />
         <ImgSearch src={Search} alt="SearchIcon" />
         <ButtonSearch type="submit">Buscar</ButtonSearch>
       </form>
-      <div>
+      <DivMenuBar>
         <MenuBar />
-      </div>
+      </DivMenuBar>
 
       {restaurants.map((restaurant) => {
         if (search === "" || restaurant.name.includes(search)) {

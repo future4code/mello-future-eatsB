@@ -50,7 +50,6 @@ function Login() {
     try {
       const response = await Axios.post(`${baseUrl}/login`, loginBody);
       window.localStorage.setItem("token", response.data.token);
-      alert("Login efetuado com sucesso!");
       if (response.data.user.hasAddress === true) {
         history.push("/feed");
       } else if (response.data.user.hasAddress === false) {
