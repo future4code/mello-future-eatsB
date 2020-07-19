@@ -1,7 +1,12 @@
 import React, { useEffect, useState } from "react";
 import futureEats from "../../Services/futureEats";
 import OrderItem from "../../Components/OrderItem/index";
-import { Container } from "./styles";
+import { 
+  Container,
+  Loading,
+  Bar,
+  TextBar
+} from "./styles";
 import Pen from "../../Assets/img/pen.svg";
 import { useHistory } from "react-router-dom";
 import { CpfMask } from "../../Components/EditProfile/index";
@@ -61,9 +66,12 @@ const ProfilePage = () => {
   return (
     <Container>
       {loading ? (
-        <h1>Carregando...</h1>
+        <Loading>Carregando...</Loading>
       ) : (
         <>
+          <Bar>
+            <TextBar>Meu perfil</TextBar>
+          </Bar>
           <div id="userData">
             <p>{profile.name}</p>
             <p>{profile.email}</p>
@@ -85,8 +93,12 @@ const ProfilePage = () => {
             <p>Histórico de pedidos</p>
             {ordersHistory &&
               ordersHistory.map((order) => (
+                order.orders.length === 0 ? (
+                  <p>Você não realizou nenhum pedido</p>
+                ) : (
                 <OrderItem place="" date="" subtotal="" />
-              ))}
+                )
+                ))}
           </div>
         </>
       )}

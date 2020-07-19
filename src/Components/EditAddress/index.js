@@ -14,9 +14,9 @@ import {
   SaveButton,
 } from "../Common/styled";
 import { useHistory } from "react-router-dom";
-import { updateAddress } from './services';
 import useForm from "../../Hooks/useForm";
 import Back from "../../Assets/img/Back.svg";
+import futureEats from "../../Services/futureEats";
 
 const EditAddress = () => {
   const history = useHistory();
@@ -35,17 +35,25 @@ const EditAddress = () => {
     onChange(name, value)
   }
 
-  const sendAddressUpdate = async() => {
-    await updateAddress(
-      form.street, 
-      form.number, 
-      form.neighbourhood, 
-      form.city, 
-      form.state, 
-      form.complement
-    )
-  }
+  const updateAddress = async (event) => {
+    event.preventDefault();
+
+    const axiosConfig = {
+      headers: {
+        auth: String(localStorage.getItem("token")),
+      },
+    };
   
+    try {
+      const response = await futureEats.put("/address", form, axiosConfig);
+      localStorage.removeItem("token");
+      localStorage.setItem("token", response.data.token);
+      history.push("/feed");
+    } catch (e) {
+      alert("Houve um erro ao salvar o endereço. Tente novamente.");
+    }
+  };
+ 
   const backToLogin = () => {
     history.push("/login");
   };
@@ -56,99 +64,101 @@ const EditAddress = () => {
         <BackImg onClick={backToLogin} src={Back} alt="Drop Right" />
       </Bar>
       <TextAddress>Meu endereço</TextAddress>
-      <InputLocus>
-        <InputRectangle1
-          name='street'
-          required
-          label='Logradouro'
-          variant='outlined'
-          value={form.street}
-          color='secondary'
-          onChange={handleChange}
-          placeholder='Rua/Av.'
-          InputLabelProps={{shrink: true}}
-          />
-      </InputLocus>
-
-      <InputLocus>
-        <InputRectangle2
-          name='number'
-          required
-          inputProps={{min: 0, inputMode: 'numeric'}}
-          type='number'
-          label='Número'
-          variant='outlined'
-          value={form.number}
-          color='secondary'
-          onChange={handleChange}
-          placeholder='Número'
-          InputLabelProps={{shrink: true}}
-        />
-      </InputLocus>
+      <form onSubmit={updateAddress}>
+        <InputLocus>
+          <InputRectangle1
+            name='street'
+            required
+            label='Logradouro'
+            variant='outlined'
+            value={form.street}
+            color='secondary'
+            onChange={handleChange}
+            placeholder='Rua/Av.'
+            InputLabelProps={{shrink: true}}
+            />
+        </InputLocus>
 
         <InputLocus>
-      <InputRectangle3
-        name='complement'
-        label='Complemento'
-        variant='outlined'
-        value={form.complement}
-        color='secondary'
-        onChange={handleChange}
-        placeholder='Apto./Bloco'
-        InputLabelProps={{shrink: true}}
-      />
-      </InputLocus>
+          <InputRectangle2
+            name='number'
+            required
+            inputProps={{min: 0, inputMode: 'numeric'}}
+            type='number'
+            label='Número'
+            variant='outlined'
+            value={form.number}
+            color='secondary'
+            onChange={handleChange}
+            placeholder='Número'
+            InputLabelProps={{shrink: true}}
+          />
+        </InputLocus>
 
-      <InputLocus>
-      <InputRectangle4 
-        name='neighbourhood'
-        required
-        label='Bairro'
-        variant='outlined'
-        value={form.neighbourhood}
-        color='secondary'
-        onChange={handleChange}
-        placeholder='Bairro'
-        InputLabelProps={{shrink: true}}
-      />
-      </InputLocus>
-
-      <InputLocus>
-        <InputRectangle5
-          name='city'
-          required
-          label='Cidade'
+        <InputLocus>
+        <InputRectangle3
+          name='complement'
+          label='Complemento'
           variant='outlined'
-          value={form.city}
+          value={form.complement}
           color='secondary'
           onChange={handleChange}
-          placeholder='Cidade'
+          placeholder='Apto./Bloco'
           InputLabelProps={{shrink: true}}
         />
-      </InputLocus>
+        </InputLocus>
 
-      <InputLocus>
-        <InputRectangle6 
-          name='state'
+        <InputLocus>
+        <InputRectangle4 
+          name='neighbourhood'
           required
-          label='Estado'
+          label='Bairro'
           variant='outlined'
-          value={form.state.toUpperCase()}
+          value={form.neighbourhood}
           color='secondary'
           onChange={handleChange}
-          inputProps={{maxLength: 2}}
-          placeholder='Estado'
+          placeholder='Bairro'
           InputLabelProps={{shrink: true}}
         />
-      </InputLocus>
+        </InputLocus>
 
-      <SaveButton
-        variant='contained'
-        color='secondary'
-        onClick={sendAddressUpdate}
-      >
-        Salvar
-      </SaveButton>
+        <InputLocus>
+          <InputRectangle5
+            name='city'
+            required
+            label='Cidade'
+            variant='outlined'
+            value={form.city}
+            color='secondary'
+            onChange={handleChange}
+            placeholder='Cidade'
+            InputLabelProps={{shrink: true}}
+          />
+        </InputLocus>
+
+        <InputLocus>
+          <InputRectangle6 
+            name='state'
+            required
+            label='Estado'
+            variant='outlined'
+            value={form.state.toUpperCase()}
+            color='secondary'
+            onChange={handleChange}
+            inputProps={{maxLength: 2}}
+            placeholder='Estado'
+            InputLabelProps={{shrink: true}}
+          />
+        </InputLocus>
+
+        <SaveButton
+          variant='contained'
+          color='secondary'
+          type="submit"
+        >
+          Salvar
+        </SaveButton>
+      </form>
     </Container>
   )
 }
