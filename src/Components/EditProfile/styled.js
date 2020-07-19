@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 import { TextField } from '@material-ui/core'
 
 export const Container = styled.div`
@@ -7,6 +7,18 @@ export const Container = styled.div`
   align-items: center;
   width: 100%;
   height: 640px;
+`;
+
+export const InputLocus = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 360px;
+  height: 72px;
+  padding: 8px 16px;
+  :last-of-type {
+    margin-bottom: 8px;
+  }
 `;
 
 export const Bar = styled.div`
@@ -32,9 +44,9 @@ export const BackImg = styled.img`
     object-fit: contain;
 `;
 
-export const TextAddress = styled.p`
-    width: 296px;
-    height: 18px;
+export const TextBar = styled.p`
+    width: 91px;
+    height: 19px;
     color: #000000;
     font-family: Roboto;
     font-size: 16px;
@@ -46,67 +58,61 @@ export const TextAddress = styled.p`
     text-align: center;
 
     position: absolute;
-    top: 92px;
-`;
-
-export const InputLocus = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 360px;
-  height: 72px;
-  padding: 8px 16px;
-
-  :last-of-type{
-    margin-bottom: 8px;
-  }
-`;
-
-export const InputRectangle = styled(TextField)`
-  width: 328px;
-  height: 56px;
+    top: 33px;
 `;
 
 export const InputRectangle1 = styled(TextField)`
   width: 328px;
   height: 56px;
+  border-radius: 2px;
+  border: solid 1px #b8b8b8;
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: -0.39px;
+  color: #b8b8b8;
+  padding-left: 16px;
   position: absolute;
-  top: 130px;
+  top: 80px;
 `;
 
 export const InputRectangle2 = styled(TextField)`
   width: 328px;
   height: 56px;
-  position: relative;
-  top: 130px;
+  border-radius: 2px;
+  border: solid 1px #b8b8b8;
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: -0.39px;
+  color: #b8b8b8;
+  padding-left: 16px;
+  position: absolute;
+  top: 80px;
 `;
 
 export const InputRectangle3 = styled(TextField)`
   width: 328px;
   height: 56px;
+  border-radius: 2px;
+  border: solid 1px #b8b8b8;
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: -0.39px;
+  color: #b8b8b8;
+  padding-left: 16px;
   position: absolute;
-  top: 130px;
-`;
-
-export const InputRectangle4 = styled(TextField)`
-  width: 328px;
-  height: 56px;
-  position: absolute;
-  top: 130px;
-`;
-
-export const InputRectangle5 = styled(TextField)`
-  width: 328px;
-  height: 56px;
-  position: absolute;
-  top: 130px;
-`;
-
-export const InputRectangle6 = styled(TextField)`
-  width: 328px;
-  height: 56px;
-  position: absolute;
-  top: 130px;
+  top: 80px;
 `;
 
 export const SaveButton = styled.button`
@@ -125,8 +131,6 @@ export const SaveButton = styled.button`
   letter-spacing: -0.39px;
   text-align: center;
   color: #000000;
-
   position: absolute;
-  top: 570px;
-  right: 16px;
+  top: 304px;
 `;

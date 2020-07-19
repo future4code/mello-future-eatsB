@@ -6,6 +6,7 @@ import {
   TextBar,
   Address,
   OrderBox,
+  Cart,
   Place,
   RestaurantName,
   AddressRestaurant,
@@ -56,7 +57,7 @@ export default function CartBox() {
       </Address>
       <OrderBox>
         {state.length === 0 ? (
-          <h3>Carrinho vazio</h3>
+          <Cart>Carrinho vazio</Cart>
         ) : (
           <div id="list">
             <Place>

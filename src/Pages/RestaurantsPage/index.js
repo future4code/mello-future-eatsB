@@ -184,7 +184,6 @@ const RestaurantsPage = () => {
               <ItemCard>
                 <ImgMenu
                   src={product.photoUrl}
-                  srcSet={`${product.photoUrl}@2x.png 2x, ${product.photoUrl}@3x.png 3x`}
                   alt="ImgFood"
                 />
                 <BoxDescription>

@@ -121,6 +121,21 @@ export const OrderBox = styled.section`
   }
 `;
 
+export const Cart = styled.p`
+  width: 296px;
+  height: 18px;
+  opacity: 0.89;
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: -0.39px;
+  text-align: center;
+  color: #000000;
+`;
+
 export const PriceBox = styled.section`
   width: 100%;
   display: flex;

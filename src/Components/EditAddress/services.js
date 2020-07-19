@@ -25,11 +25,9 @@ export const updateAddress = async (
 
   try {
     const response = await futureEats.put("/address", body, axiosConfig);
-
     localStorage.removeItem("token");
     localStorage.setItem("token", response.data.token);
-    alert("Endereço alterado com sucesso");
   } catch (e) {
-    alert("Houve um erro ao tentar alterar o endereço.");
+    alert("Houve um erro ao salvar o endereço. Tente novamente.");
   }
 };

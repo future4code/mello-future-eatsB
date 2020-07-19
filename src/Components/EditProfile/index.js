@@ -1,10 +1,18 @@
 import React, { useRef, useContext } from "react";
+import Back from "../../Assets/img/Back.svg";
+import { useHistory } from "react-router";
 import {
   Container,
+  Bar,
+  BackImg,
+  TextBar,
   InputLocus,
-  InputRectangle,
+  InputRectangle1,
+  InputRectangle2,
+  InputRectangle3,
   SaveButton,
-} from "../Common/styled";
+ 
+} from "./styled";
 import Cleave from "cleave.js/react";
 import PropTypes from "prop-types";
 import ProfileContext from "../../Contexts/ProfileContext/context";
@@ -38,6 +46,7 @@ CpfMask.propTypes = {
 const EditProfile = () => {
   const { profileData } = useContext(ProfileContext);
 
+  const history = useHistory();
   const myInput = useRef();
 
   const { form, onChange } = useForm({
@@ -55,10 +64,18 @@ const EditProfile = () => {
     updateProfile(form.name, form.email, form.cpf);
   };
 
+  const backToProfile = () => {
+    history.push("/profile");
+  };
+
   return (
     <Container>
+      <Bar>
+      <BackImg onClick={backToProfile} src={Back} alt="Drop Right" />
+        <TextBar>Editar</TextBar>
+      </Bar>
       <InputLocus>
-        <InputRectangle
+        <InputRectangle1
           name="name"
           required
           label="Nome"
@@ -66,11 +83,11 @@ const EditProfile = () => {
           value={form.name}
           color="secondary"
           onChange={handleChange}
-          InputLabelProps={{ shrink: true }}
+          placeholder="Nome e sobrenome"
         />
       </InputLocus>
       <InputLocus>
-        <InputRectangle
+        <InputRectangle2
           name="email"
           required
           label="E-mail"
@@ -82,7 +99,7 @@ const EditProfile = () => {
         />
       </InputLocus>
       <InputLocus>
-        <InputRectangle
+        <InputRectangle3
           label="CPF"
           name="cpf"
           required

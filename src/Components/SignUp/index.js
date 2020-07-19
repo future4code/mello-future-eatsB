@@ -70,8 +70,9 @@ function SignUp() {
         .then((response) => {
           console.log(response);
           window.localStorage.setItem("token", response.data.token);
-          alert("Conta criada com sucesso!");
-          goToLogin();
+          resetForm();
+          buttonSignUp();
+          history.push("/editaddress")
         })
         .catch((e) => {
           console.log(e);
@@ -79,12 +80,6 @@ function SignUp() {
     } else {
       alert("Senhas não conferem!");
     }
-  };
-
-  const goToLogin = () => {
-    resetForm();
-    buttonSignUp();
-    history.push("/editaddress");
   };
 
   const backToLogin = () => {

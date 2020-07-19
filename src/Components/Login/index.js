@@ -55,7 +55,7 @@ function Login() {
       }
     } catch (error) {
       console.log(error);
-      alert("Erro ao logar, tente novamente...");
+      alert("E-mail ou senha incorreto ou inexistente. Tente novamente.");
     }
   };
 
