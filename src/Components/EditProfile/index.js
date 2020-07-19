@@ -3,111 +3,103 @@ import {
   Container,
   InputLocus,
   InputRectangle,
-  SaveButton
+  SaveButton,
 } from "../Common/styled";
-import Cleave from 'cleave.js/react'
-import PropTypes from 'prop-types'
+import Cleave from "cleave.js/react";
+import PropTypes from "prop-types";
 import ProfileContext from "../../Contexts/ProfileContext/context";
 import useForm from "../../Hooks/useForm";
-import { updateProfile } from './services'
+import { updateProfile } from "./services";
 
-const CpfMask = props => {
+export const CpfMask = (props) => {
+  const { inputRef, ...rest } = props;
 
-  const { inputRef, ...rest } = props
-
-  return(
+  return (
     <Cleave
       ref={(ref) => {
-        inputRef(ref ? ref.inputElement : null)
+        inputRef(ref ? ref.inputElement : null);
       }}
       options={{
-        blocks: [ 3, 3, 3, 2],
-        delimiter: '',
-        delimiters: ['.','.','-'],
-        numericalOnly: true
+        blocks: [3, 3, 3, 2],
+        delimiter: "",
+        delimiters: [".", ".", "-"],
+        numericalOnly: true,
       }}
-      inputMode='numeric'
+      inputMode="numeric"
       {...rest}
     />
-  )
-}
+  );
+};
 
 CpfMask.propTypes = {
-  inputRef: PropTypes.func.isRequired
+  inputRef: PropTypes.func.isRequired,
 };
 
 const EditProfile = () => {
-
-  const { profileData } = useContext(
-    ProfileContext
-  );
+  const { profileData } = useContext(ProfileContext);
 
   const myInput = useRef();
 
   const { form, onChange } = useForm({
     name: profileData.name,
     email: profileData.email,
-    cpf: profileData.cpf
-  })
+    cpf: profileData.cpf,
+  });
 
-  const handleChange = e => {
-    const { name, value } = e.target
-    onChange(name, value)
-  }
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    onChange(name, value);
+  };
 
   const handleUpdate = () => {
-    updateProfile(form.name, form.email, form.cpf)
-  }
+    updateProfile(form.name, form.email, form.cpf);
+  };
 
-  return(
+  return (
     <Container>
       <InputLocus>
         <InputRectangle
-          name='name'
+          name="name"
           required
-          label='Nome'
-          variant='outlined'
+          label="Nome"
+          variant="outlined"
           value={form.name}
-          color='secondary'
+          color="secondary"
           onChange={handleChange}
-          InputLabelProps={{shrink: true}}
-          />
-      </InputLocus>
-      <InputLocus>
-        <InputRectangle
-          name='email'
-          required
-          label='E-mail'
-          variant='outlined'
-          value={form.email}
-          color='secondary'
-          onChange={handleChange}
-          InputLabelProps={{shrink: true}}
+          InputLabelProps={{ shrink: true }}
         />
       </InputLocus>
       <InputLocus>
         <InputRectangle
-          label='CPF'
-          name='cpf'
+          name="email"
           required
-          variant='outlined'
-          color='secondary'
+          label="E-mail"
+          variant="outlined"
+          value={form.email}
+          color="secondary"
+          onChange={handleChange}
+          InputLabelProps={{ shrink: true }}
+        />
+      </InputLocus>
+      <InputLocus>
+        <InputRectangle
+          label="CPF"
+          name="cpf"
+          required
+          variant="outlined"
+          color="secondary"
           onChange={handleChange}
           value={form.cpf}
           inputRef={myInput}
-          InputProps={{inputComponent: CpfMask}}
-          InputLabelProps={{shrink: true}}
+          InputProps={{ inputComponent: CpfMask }}
+          InputLabelProps={{ shrink: true }}
         />
       </InputLocus>
-      <SaveButton
-        variant='contained'
-        color='secondary'
-        onClick={handleUpdate}
-      >
+      <SaveButton variant="contained" color="secondary" onClick={handleUpdate}>
         Salvar
       </SaveButton>
     </Container>
-  )
-}
+  );
+};
 
 export default EditProfile;

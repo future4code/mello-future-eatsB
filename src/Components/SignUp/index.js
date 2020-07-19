@@ -1,10 +1,14 @@
-import React, { useEffect } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 import useForm from "../../Hooks/useForm";
 import LogoFutureEats from "../../Assets/img/LogoFutureEats.png";
-import PasswordImg from "../../Assets/img/PasswordImg.svg"
+import { InputAdornment, IconButton } from "@material-ui/core";
+import PropTypes from "prop-types";
+import Visibility from "@material-ui/icons/Visibility";
+import VisibilityOff from "@material-ui/icons/VisibilityOff";
 import Back from "../../Assets/img/Back.svg";
+import { CpfMask } from "../EditProfile/index";
 import {
   Container,
   Bar,
@@ -23,23 +27,21 @@ import {
   LabelPassword,
   LabelPasswordAgain,
   SaveButton,
-  PasswordPhoto1,
-  PasswordPhoto2
 } from "./styled";
 
 const baseUrl =
   "https://us-central1-missao-newton.cloudfunctions.net/futureEatsB/signup";
 
+CpfMask.propTypes = {
+  inputRef: PropTypes.func.isRequired,
+};
+
 function SignUp() {
   const history = useHistory();
+  const [showPassword, setShowPassword] = useState(false);
 
-  useEffect(() => {
-    const token = window.localStorage.getItem("token");
-
-    if (token !== null) { 
-   /*    history.push("/");  */ 
-    }
-  }, [history]);
+  const handleClickShowPassword = () => setShowPassword(!showPassword);
+  const handleMouseDownPassword = () => setShowPassword(!showPassword);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -88,14 +90,14 @@ function SignUp() {
   const backToLogin = () => {
     history.push("/login");
   };
-  
+
   return (
     <Container>
       <Bar>
         <BackImg onClick={backToLogin} src={Back} alt="Drop Right" />
       </Bar>
-      <ImgLogo src={LogoFutureEats} alt="Logo"/>
-      <Signin>Cadastrar</Signin>  
+      <ImgLogo src={LogoFutureEats} alt="Logo" />
+      <Signin>Cadastrar</Signin>
       <InputLocus>
         <LabelName htmlFor="name">Nome*</LabelName>
         <InputRectangle1
@@ -134,6 +136,8 @@ function SignUp() {
           pattern="/^\d{3}\.\d{3}\.\d{3}\-\d{2}$/"
           name="cpf"
           value={form.cpf}
+          InputProps={{ inputComponent: CpfMask }}
+          InputLabelProps={{ shrink: true }}
           onChange={handleChange}
         />
       </InputLocus>
@@ -142,7 +146,7 @@ function SignUp() {
         <LabelPassword htmlFor="password">Senha*</LabelPassword>
         <InputRectangle4
           required
-          type="password"
+          type={showPassword ? "text" : "password"}
           variant="outlined"
           color="secondary"
           placeholder="Mínimo 6 caracteres"
@@ -150,8 +154,20 @@ function SignUp() {
           name="password"
           value={form.password}
           onChange={handleChange}
+          InputProps={{
+            endAdornment: (
+              <InputAdornment position="end">
+                <IconButton
+                  aria-label="toggle password visibility"
+                  onClick={handleClickShowPassword}
+                  onMouseDown={handleMouseDownPassword}
+                >
+                  {showPassword ? <Visibility /> : <VisibilityOff />}
+                </IconButton>
+              </InputAdornment>
+            ),
+          }}
         />
-        <PasswordPhoto1 src={PasswordImg} alt="PasswordLogo"/>
       </InputLocus>
 
       <InputLocus>
@@ -160,7 +176,7 @@ function SignUp() {
         </LabelPasswordAgain>
         <InputRectangle5
           required
-          type="password"
+          type={showPassword ? "text" : "password"}
           variant="outlined"
           color="secondary"
           placeholder="Confirme a senha anterior"
@@ -168,8 +184,20 @@ function SignUp() {
           name="confirmPassword"
           value={form.confirmPassword}
           onChange={handleChange}
+          InputProps={{
+            endAdornment: (
+              <InputAdornment position="end">
+                <IconButton
+                  aria-label="toggle password visibility"
+                  onClick={handleClickShowPassword}
+                  onMouseDown={handleMouseDownPassword}
+                >
+                  {showPassword ? <Visibility /> : <VisibilityOff />}
+                </IconButton>
+              </InputAdornment>
+            ),
+          }}
         />
-        <PasswordPhoto2 src={PasswordImg} alt="PasswordLogo"/>
       </InputLocus>
 
       <SaveButton variant="contained" color="secondary" onClick={buttonSignUp}>

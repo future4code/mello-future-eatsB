@@ -4,6 +4,8 @@ import OrderItem from "../../Components/OrderItem/index";
 import { Container } from "./styles";
 import Pen from "../../Assets/img/pen.svg";
 import { useHistory } from "react-router-dom";
+import { CpfMask } from "../../Components/EditProfile/index";
+import PropTypes from "prop-types";
 
 const ProfilePage = () => {
   const [profile, setProfile] = useState({});
@@ -15,6 +17,10 @@ const ProfilePage = () => {
     getProfile();
     getOrders();
   }, []);
+
+  CpfMask.propTypes = {
+    inputRef: PropTypes.func.isRequired,
+  };
 
   const getProfile = async () => {
     try {
