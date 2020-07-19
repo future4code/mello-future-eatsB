@@ -55,7 +55,7 @@ const FeedPage = () => {
 
       {restaurants.map((restaurant) => {
         if (search === "" || restaurant.name.includes(search)) {
-          return <ProfileRestaurants restaurants={restaurant} />;
+          return <ProfileRestaurants key={restaurant.id} restaurants={restaurant} />;
         }
       })}
     </Container>
