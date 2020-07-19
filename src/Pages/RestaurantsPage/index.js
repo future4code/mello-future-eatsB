@@ -179,7 +179,7 @@ const RestaurantsPage = () => {
       {products &&
         products.map((product) => {
           return (
-            <RestaurantMenu>
+            <RestaurantMenu key={product.id}>
               <CategoryMenu>{product.category}</CategoryMenu>
               <ItemCard>
                 <ImgMenu

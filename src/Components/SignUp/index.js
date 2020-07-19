@@ -72,7 +72,7 @@ function SignUp() {
           window.localStorage.setItem("token", response.data.token);
           resetForm();
           buttonSignUp();
-          history.push("/editaddress")
+          history.push("/login")
         })
         .catch((e) => {
           console.log(e);

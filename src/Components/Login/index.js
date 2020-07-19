@@ -50,6 +50,7 @@ function Login() {
       window.localStorage.setItem("token", response.data.token);
       if (response.data.user.hasAddress === true) {
         history.push("/feed");
+        alert("Já tem endereço")
       } else if (response.data.user.hasAddress === false) {
         history.push("/editaddress");
       }
