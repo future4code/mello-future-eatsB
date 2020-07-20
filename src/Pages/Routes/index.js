@@ -30,9 +30,9 @@ const Routes = () => {
           <LoginRoute exact path="/signup">
             <SignUpPage />
           </LoginRoute>
-          <LoginRoute exact path="/editaddress">
+          <PrivateRoute exact path="/editaddress">
             <EditAddressPage />
-          </LoginRoute>
+          </PrivateRoute>
           <PrivateRoute exact path="/feed">
             <FeedPage />
           </PrivateRoute>

@@ -46,9 +46,9 @@ const EditAddress = () => {
   
     try {
       const response = await futureEats.put("/address", form, axiosConfig);
-      localStorage.removeItem("token");
-      localStorage.setItem("token", response.data.token);
+      localStorage.clear();
       history.push("/feed");
+      localStorage.setItem("token", response.data.token);
     } catch (e) {
       alert("Houve um erro ao salvar o endereço. Tente novamente.");
     }
