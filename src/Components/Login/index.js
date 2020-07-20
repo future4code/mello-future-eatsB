@@ -48,12 +48,7 @@ function Login() {
     try {
       const response = await Axios.post(`${baseUrl}/login`, loginBody);
       window.localStorage.setItem("token", response.data.token);
-      if (response.data.user.hasAddress === true) {
-        history.push("/feed");
-        alert("Já tem endereço")
-      } else if (response.data.user.hasAddress === false) {
-        history.push("/editaddress");
-      }
+      response.data.user.hasAddress ? history.push("/feed") : history.push("/editaddress");
     } catch (error) {
       console.log(error);
       alert("E-mail ou senha incorreto ou inexistente. Tente novamente.");
