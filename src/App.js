@@ -1,26 +1,43 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import Routes from "./Pages/Routes";
+import {createGlobalStyle} from 'styled-components';
+import CartProvider from "./Contexts/CartContext/provider";
+import { createMuiTheme, ThemeProvider } from '@material-ui/core'
+import ProfileProvider from "./Contexts/ProfileContext/Provider";
 
-function App() {
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      main: "#B8B8B8",
+    },
+    secondary: {
+      main: "#5CB646",
+    }
+  }
+})
+
+const GlobalStyle = createGlobalStyle`
+  * {
+    margin: 0;
+    padding: 0;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+  }
+`;
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={theme}>
+      <GlobalStyle />
+      <CartProvider>
+        <ProfileProvider>
+          <Routes />
+        </ProfileProvider>
+      </CartProvider>
+    </ThemeProvider>
   );
-}
+};
 
 export default App;
